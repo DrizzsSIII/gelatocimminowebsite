@@ -38,12 +38,12 @@ export default function FlavorsGrid() {
                 </p>
                 <span
                   className={`inline-block text-xs font-inter font-semibold px-2.5 py-1 rounded-full ${
-                    flavor.badge === 'Sorbetto'
+                    flavor.category === 'sorbetto'
                       ? 'bg-[#EAF2F8] text-[#2E6A8F]'
                       : 'bg-[#4A8DB5]/10 text-[#2E6A8F]'
                   }`}
                 >
-                  {flavor.badge}
+                  {flavor.category === 'sorbetto' ? 'Sorbetto' : flavor.category === 'specialty' ? 'Specialty' : 'Gelato'}
                 </span>
               </div>
             </div>
