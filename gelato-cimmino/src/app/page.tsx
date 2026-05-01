@@ -8,10 +8,48 @@ const FEATURED = FLAVORS.filter((f) =>
 )
 
 const FEATURES = [
-  { icon: '🛡', title: '100% Natural', desc: 'No artificial flavors, colors, or preservatives — every ingredient chosen for taste and quality.' },
-  { icon: '🧇', title: 'Homemade Cones', desc: 'Baked fresh in-house each morning — crispy, golden, made to hold every scoop.' },
-  { icon: '⏰', title: 'Made Fresh Daily', desc: "Small batches churned every morning. When a flavor sells out, it's gone." },
-  { icon: '📖', title: 'Old World Recipe', desc: 'Every recipe brought directly from Torre del Greco in Southern Italy.' },
+  {
+    title: '100% Natural',
+    desc: 'No artificial flavors, colors, or preservatives — every ingredient chosen for taste and quality.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2 22c1-4 4-6 10-6s9 2 10 6" />
+        <path d="M12 16C8 16 5 12 5 7c0-1 4-3 7-3s7 2 7 3c0 5-3 9-7 9z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Homemade Cones',
+    desc: 'Baked fresh in-house each morning — crispy, golden, made to hold every scoop.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9.5 3h5a1 1 0 0 1 1 1v1.5a5.5 5.5 0 0 1-11 0V4a1 1 0 0 1 1-1z" />
+        <path d="M7 8l2.5 13h5L17 8" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Made Fresh Daily',
+    desc: "Small batches churned every morning. When a flavor sells out, it's gone.",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16 14" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Old World Recipe',
+    desc: 'Every recipe brought directly from Torre del Greco in Southern Italy.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+        <line x1="9" y1="9" x2="15" y2="9" />
+        <line x1="9" y1="13" x2="13" y2="13" />
+      </svg>
+    ),
+  },
 ]
 
 const REVIEWS = [
@@ -21,7 +59,8 @@ const REVIEWS = [
 ]
 
 export default function HomePage() {
-  const today = WEEK_HOURS[(new Date().getDay() + 6) % 7]
+  const todayIndex = (new Date().getDay() + 6) % 7
+  const today = WEEK_HOURS[todayIndex]
 
   return (
     <>
@@ -56,13 +95,13 @@ export default function HomePage() {
                 Handcrafted daily using Old World Italian techniques and the finest natural ingredients. Born in Torre del Greco, perfected in Scottsdale.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Link
-                  href="/gelato-menu"
+                <a
+                  href="#flavors"
                   className="inline-flex items-center justify-center text-sm font-semibold text-white px-7 py-3.5 rounded transition-colors active:scale-95 hover:opacity-90"
                   style={{ backgroundColor: '#4A8DB5' }}
                 >
                   See Our Menu
-                </Link>
+                </a>
                 <a
                   href="https://maps.google.com/?q=7140+E+Main+St,+Scottsdale,+AZ+85251"
                   target="_blank"
@@ -76,7 +115,7 @@ export default function HomePage() {
             </div>
             <div className="relative rounded-2xl overflow-hidden w-full aspect-[4/3]">
               <Image
-                src="https://gelatocimmino.com/wp-content/uploads/2019/02/best-gelato.jpg"
+                src="/images/hero-gelato.jpg"
                 alt="Fresh Italian gelato at Gelato Cimmino"
                 fill
                 priority
@@ -99,7 +138,7 @@ export default function HomePage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
             {FEATURES.map((f) => (
               <div key={f.title} className="bg-white rounded-xl p-6" style={{ border: '1px solid rgba(0,0,0,0.08)' }}>
-                <div className="text-2xl mb-3">{f.icon}</div>
+                <div className="mb-3">{f.icon}</div>
                 <h3 className="font-playfair font-bold text-base mb-2" style={{ color: '#1C1C1C' }}>{f.title}</h3>
                 <p className="text-xs leading-relaxed" style={{ color: '#6B6B6B', lineHeight: '1.65' }}>{f.desc}</p>
               </div>
@@ -109,7 +148,7 @@ export default function HomePage() {
       </section>
 
       {/* Featured Flavors */}
-      <section style={{ backgroundColor: '#ffffff', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+      <section id="flavors" style={{ backgroundColor: '#ffffff', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-4">
@@ -148,7 +187,7 @@ export default function HomePage() {
       </section>
 
       {/* Our Story */}
-      <section style={{ backgroundColor: '#EAF2F8', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+      <section id="story" style={{ backgroundColor: '#EAF2F8', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
@@ -172,10 +211,10 @@ export default function HomePage() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="relative rounded-xl overflow-hidden aspect-[3/4]">
-                <Image src="https://gelatocimmino.com/wp-content/uploads/2019/02/core-values-our-owner.jpg" alt="Mario Cimmino, founder" fill className="object-cover object-top" sizes="(max-width: 1024px) 50vw, 25vw" />
+                <Image src="/images/story-mario.jpg" alt="Mario Cimmino, founder" fill className="object-cover object-top" sizes="(max-width: 1024px) 50vw, 25vw" />
               </div>
               <div className="relative rounded-xl overflow-hidden aspect-[3/4] mt-8">
-                <Image src="https://gelatocimmino.com/wp-content/uploads/2019/02/core-values.jpg" alt="Gelato Cimmino shop" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                <Image src="/images/story-shop.jpg" alt="Gelato Cimmino shop" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
               </div>
             </div>
           </div>
@@ -214,11 +253,28 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+          <div className="mt-10 text-center">
+            <a
+              href="https://bit.ly/2D5NAAl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 text-sm font-semibold px-6 py-3 rounded-lg transition-colors hover:bg-[#4A8DB5] hover:text-white hover:border-[#4A8DB5]"
+              style={{ border: '2px solid rgba(0,0,0,0.15)', color: '#3D3D3D' }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden>
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              Read all our reviews on Google
+            </a>
+          </div>
         </div>
       </section>
 
       {/* Find Us */}
-      <section style={{ backgroundColor: '#F5F7F9', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+      <section id="find-us" style={{ backgroundColor: '#F5F7F9', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
             <div>
@@ -239,23 +295,36 @@ export default function HomePage() {
                   <h3 className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#1C1C1C' }}>Hours</h3>
                   <table className="text-sm w-full max-w-xs">
                     <tbody>
-                      {WEEK_HOURS.map((h) => (
-                        <tr key={h.day} style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
-                          <td className="py-2 pr-4 font-medium w-28" style={{ color: '#1C1C1C' }}>{h.day}</td>
-                          <td className="py-2" style={{ color: '#6B6B6B' }}>{h.open} – {h.close}</td>
+                      {WEEK_HOURS.map((h, i) => (
+                        <tr
+                          key={h.day}
+                          style={{
+                            borderBottom: '1px solid rgba(0,0,0,0.06)',
+                            backgroundColor: i === todayIndex ? 'rgba(74,141,181,0.08)' : undefined,
+                          }}
+                        >
+                          <td className="py-2 pr-4 w-32" style={{ color: '#1C1C1C', fontWeight: i === todayIndex ? 700 : 500 }}>
+                            {h.day}
+                            {i === todayIndex && (
+                              <span className="ml-2 text-xs font-semibold px-1.5 py-0.5 rounded align-middle" style={{ backgroundColor: '#4A8DB5', color: '#fff', fontSize: '10px' }}>Today</span>
+                            )}
+                          </td>
+                          <td className="py-2" style={{ color: i === todayIndex ? '#1C1C1C' : '#6B6B6B', fontWeight: i === todayIndex ? 600 : undefined }}>{h.open} – {h.close}</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
-                <Link
-                  href="/contact"
+                <a
+                  href="https://maps.google.com/?q=7140+E+Main+St,+Scottsdale,+AZ+85251"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-white px-5 py-3 rounded transition-colors hover:opacity-90 active:scale-95"
                   style={{ backgroundColor: '#4A8DB5' }}
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
                   Get Directions
-                </Link>
+                </a>
               </div>
             </div>
             <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(0,0,0,0.1)', minHeight: '400px' }}>
