@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  body {
+    background-color: #ffffff;
+    color: #1C1C1C;
+  }
+
+  ::selection {
+    background-color: #4A8DB5;
+    color: #ffffff;
+  }
+
+  /* Ensure description/body text is never link-blue */
+  p, li, address, td {
+    color: inherit;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .text-gray-desc {
+    color: #5A5A5A;
+  }
+}
