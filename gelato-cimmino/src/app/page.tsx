@@ -23,9 +23,10 @@ const FEATURES = [
     title: '100% Natural',
     desc: 'No artificial flavors, colors, or preservatives — every ingredient chosen for taste and quality.',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="1.5" strokeLinecap="round">
-        <path d="M12 22V12M12 12C12 12 7 10 5 5c4 0 7 2 7 7z"/>
-        <path d="M12 12c0 0 5-2 7-7-4 0-7 2-7 7z"/>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22V12"/>
+        <path d="M12 12C12 7 8 4 4 4c0 4 2 8 8 8z"/>
+        <path d="M12 12c0-5 4-8 8-8-1 4-4 8-8 8z"/>
       </svg>
     ),
   },
@@ -33,10 +34,10 @@ const FEATURES = [
     title: 'Homemade Cones',
     desc: 'Baked fresh in-house each morning — crispy, golden, made to hold every scoop.',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="1.5" strokeLinecap="round">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M7 10l5 12 5-12"/>
         <path d="M5 10h14"/>
-        <path d="M12 2a4 4 0 014 4H8a4 4 0 014-4z"/>
+        <path d="M8 6a4 4 0 018 0"/>
       </svg>
     ),
   },
@@ -44,7 +45,7 @@ const FEATURES = [
     title: 'Made Fresh Daily',
     desc: "Small batches churned every morning. When a flavor sells out, it's gone.",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="1.5" strokeLinecap="round">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="9"/>
         <path d="M12 7v5l3 3"/>
       </svg>
@@ -54,9 +55,9 @@ const FEATURES = [
     title: 'Old World Recipe',
     desc: 'Every recipe brought directly from Torre del Greco in Southern Italy.',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="1.5" strokeLinecap="round">
-        <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
-        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/>
+        <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/>
       </svg>
     ),
   },
@@ -320,14 +321,16 @@ export default function HomePage() {
                           key={h.day}
                           style={{
                             borderBottom: '1px solid rgba(0,0,0,0.06)',
-                            backgroundColor: i === todayIndex ? 'rgba(74,141,181,0.08)' : undefined,
+                            backgroundColor: i === todayIndex ? '#f0fdf4' : undefined,
                           }}
                         >
-                          <td className="py-2 pr-4 w-32" style={{ color: '#1C1C1C', fontWeight: i === todayIndex ? 700 : 500 }}>
-                            {h.day}
-                            {i === todayIndex && (
-                              <span className="ml-2 text-xs font-semibold px-1.5 py-0.5 rounded align-middle" style={{ backgroundColor: '#4A8DB5', color: '#fff', fontSize: '10px' }}>Today</span>
-                            )}
+                          <td className="py-2 pr-4 w-36">
+                            <div className="flex items-center gap-2">
+                              <span style={{ color: '#1C1C1C', fontWeight: i === todayIndex ? 700 : 500 }}>{h.day}</span>
+                              {i === todayIndex && (
+                                <span className="text-xs font-semibold px-1.5 py-0.5 rounded" style={{ backgroundColor: '#22c55e', color: '#fff', fontSize: '10px' }}>Today</span>
+                              )}
+                            </div>
                           </td>
                           <td className="py-2" style={{ color: i === todayIndex ? '#1C1C1C' : '#6B6B6B', fontWeight: i === todayIndex ? 600 : undefined }}>{h.open} – {h.close}</td>
                         </tr>
