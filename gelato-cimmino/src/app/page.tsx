@@ -7,14 +7,25 @@ const FEATURED = FLAVORS.filter((f) =>
   ['Pistachio', 'Hazelnut & Nutella', 'Amarena Cherry', 'Dark Chocolate', 'Lemon', 'Strawberry', 'Peanut Butter Cup', 'Coconut'].includes(f.name)
 )
 
+const flavorAccents: Record<string, { border: string; bg: string }> = {
+  'Amarena Cherry':     { border: '#8B1A1A', bg: '#fff5f5' },
+  'Coconut':            { border: '#94a3b8', bg: '#f8fafc' },
+  'Dark Chocolate':     { border: '#3B1F0A', bg: '#fdf8f5' },
+  'Hazelnut & Nutella': { border: '#8B5E3C', bg: '#fdf6ee' },
+  'Peanut Butter Cup':  { border: '#C4793A', bg: '#fff7ed' },
+  'Pistachio':          { border: '#6B8C5A', bg: '#f0fdf4' },
+  'Lemon':              { border: '#ca8a04', bg: '#fefce8' },
+  'Strawberry':         { border: '#e11d48', bg: '#fff1f2' },
+}
+
 const FEATURES = [
   {
     title: '100% Natural',
     desc: 'No artificial flavors, colors, or preservatives — every ingredient chosen for taste and quality.',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M2 22c1-4 4-6 10-6s9 2 10 6" />
-        <path d="M12 16C8 16 5 12 5 7c0-1 4-3 7-3s7 2 7 3c0 5-3 9-7 9z" />
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="1.5" strokeLinecap="round">
+        <path d="M12 22V12M12 12C12 12 7 10 5 5c4 0 7 2 7 7z"/>
+        <path d="M12 12c0 0 5-2 7-7-4 0-7 2-7 7z"/>
       </svg>
     ),
   },
@@ -22,9 +33,10 @@ const FEATURES = [
     title: 'Homemade Cones',
     desc: 'Baked fresh in-house each morning — crispy, golden, made to hold every scoop.',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M9.5 3h5a1 1 0 0 1 1 1v1.5a5.5 5.5 0 0 1-11 0V4a1 1 0 0 1 1-1z" />
-        <path d="M7 8l2.5 13h5L17 8" />
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="1.5" strokeLinecap="round">
+        <path d="M7 10l5 12 5-12"/>
+        <path d="M5 10h14"/>
+        <path d="M12 2a4 4 0 014 4H8a4 4 0 014-4z"/>
       </svg>
     ),
   },
@@ -32,9 +44,9 @@ const FEATURES = [
     title: 'Made Fresh Daily',
     desc: "Small batches churned every morning. When a flavor sells out, it's gone.",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="1.5" strokeLinecap="round">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 7v5l3 3"/>
       </svg>
     ),
   },
@@ -42,11 +54,9 @@ const FEATURES = [
     title: 'Old World Recipe',
     desc: 'Every recipe brought directly from Torre del Greco in Southern Italy.',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-        <line x1="9" y1="9" x2="15" y2="9" />
-        <line x1="9" y1="13" x2="13" y2="13" />
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B1F0A" strokeWidth="1.5" strokeLinecap="round">
+        <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
       </svg>
     ),
   },
@@ -161,21 +171,31 @@ export default function HomePage() {
             <p className="text-lg" style={{ color: '#6B6B6B' }}>Made fresh every day — flavors rotate seasonally</p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
-            {FEATURED.map((f) => (
-              <div key={f.name} className="group rounded-xl overflow-hidden bg-white transition-shadow hover:shadow-md" style={{ border: '1px solid rgba(0,0,0,0.08)' }}>
-                <div className="h-24 lg:h-28 transition-transform duration-300 group-hover:scale-[1.02]" style={{ backgroundColor: f.color }} aria-hidden />
-                <div className="p-4">
-                  <h3 className="font-playfair font-bold text-sm leading-snug mb-1" style={{ color: '#1C1C1C' }}>{f.name}</h3>
-                  <p className="text-xs leading-relaxed mb-3" style={{ color: '#6B6B6B', lineHeight: '1.6' }}>{f.description}</p>
-                  <span className="inline-block text-xs font-semibold px-2.5 py-1 rounded-full" style={{
-                    backgroundColor: f.category === 'sorbetto' ? '#EAF2F8' : 'rgba(74,141,181,0.1)',
-                    color: '#2E6A8F',
-                  }}>
-                    {f.category === 'sorbetto' ? 'Sorbetto' : f.category === 'specialty' ? 'Specialty' : 'Gelato'}
-                  </span>
+            {FEATURED.map((f) => {
+              const accent = flavorAccents[f.name] ?? { border: '#4A8DB5', bg: '#ffffff' }
+              return (
+                <div
+                  key={f.name}
+                  className="rounded-xl overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+                  style={{
+                    border: '1px solid rgba(0,0,0,0.08)',
+                    borderTop: `4px solid ${accent.border}`,
+                    backgroundColor: accent.bg,
+                  }}
+                >
+                  <div className="p-4">
+                    <h3 className="font-playfair font-bold text-sm leading-snug mb-1" style={{ color: '#1C1C1C' }}>{f.name}</h3>
+                    <p className="text-xs leading-relaxed mb-3" style={{ color: '#6B6B6B', lineHeight: '1.6' }}>{f.description}</p>
+                    <span className="inline-block text-xs font-semibold px-2.5 py-1 rounded-full" style={{
+                      backgroundColor: f.category === 'sorbetto' ? '#EAF2F8' : 'rgba(74,141,181,0.1)',
+                      color: '#2E6A8F',
+                    }}>
+                      {f.category === 'sorbetto' ? 'Sorbetto' : f.category === 'specialty' ? 'Specialty' : 'Gelato'}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
           <div className="mt-10 text-center">
             <Link href="/gelato-menu" className="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:opacity-70" style={{ color: '#4A8DB5' }}>

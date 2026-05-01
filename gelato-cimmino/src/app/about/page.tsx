@@ -52,7 +52,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-2 gap-4">
               <div className="relative rounded-xl overflow-hidden aspect-[3/4]">
                 <Image
-                  src="https://gelatocimmino.com/wp-content/uploads/2019/02/core-values-our-owner.jpg"
+                  src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800&q=80"
                   alt="Mario Cimmino, founder of Gelato Cimmino"
                   fill
                   className="object-cover object-top"
@@ -61,7 +61,7 @@ export default function AboutPage() {
               </div>
               <div className="relative rounded-xl overflow-hidden aspect-[3/4] mt-8">
                 <Image
-                  src="https://gelatocimmino.com/wp-content/uploads/2019/02/core-values.jpg"
+                  src="https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?w=800&q=80"
                   alt="Gelato Cimmino shop"
                   fill
                   className="object-cover"
