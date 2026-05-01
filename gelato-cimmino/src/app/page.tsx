@@ -324,13 +324,15 @@ export default function HomePage() {
                             backgroundColor: i === todayIndex ? '#f0fdf4' : undefined,
                           }}
                         >
-                          <td className="py-2 pr-4 w-36">
-                            <div className="flex items-center gap-2">
-                              <span style={{ color: '#1C1C1C', fontWeight: i === todayIndex ? 700 : 500 }}>{h.day}</span>
+                          <td className="py-2 font-medium">
+                            <span className="flex items-center gap-2">
+                              <span>{h.day}</span>
                               {i === todayIndex && (
-                                <span className="text-xs font-semibold px-1.5 py-0.5 rounded" style={{ backgroundColor: '#22c55e', color: '#fff', fontSize: '10px' }}>Today</span>
+                                <span className="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full font-medium">
+                                  Today
+                                </span>
                               )}
-                            </div>
+                            </span>
                           </td>
                           <td className="py-2" style={{ color: i === todayIndex ? '#1C1C1C' : '#6B6B6B', fontWeight: i === todayIndex ? 600 : undefined }}>{h.open} – {h.close}</td>
                         </tr>
