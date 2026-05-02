@@ -2,6 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FLAVORS } from '@/lib/flavors'
 import { WEEK_HOURS } from '@/lib/hours'
+import { getReviews } from '@/lib/reviews'
+import { ReviewsSection } from '@/components/ReviewsSection'
+
+export const revalidate = 86400
 
 const FEATURED = FLAVORS.filter((f) =>
   ['Pistachio', 'Hazelnut & Nutella', 'Amarena Cherry', 'Dark Chocolate', 'Lemon', 'Strawberry', 'Peanut Butter Cup', 'Coconut'].includes(f.name)
@@ -63,15 +67,23 @@ const FEATURES = [
   },
 ]
 
-const REVIEWS = [
-  { name: 'Sarah M.', text: "The pistachio gelato here is absolutely life-changing. Genuinely the best I've had outside of Italy — rich, fresh, and perfectly balanced. We drive across town just for this." },
-  { name: 'James R.', text: "Discovered this gem while walking Main Street. The homemade cones alone are worth the trip. Everything tastes impossibly fresh — nothing like anything else in Scottsdale." },
-  { name: 'Lucia K.', text: "If you haven't tried the Amarena Cherry gelato, you are missing out. The owners are lovely and you can tell every single batch is made with real care. A Scottsdale treasure." },
-]
+// Placeholder images from picsum.photos (deterministic per seed).
+// source.unsplash.com was discontinued June 2022 — replace with real gelato photography when available.
+const flavorImageSeeds: Record<string, string> = {
+  'Amarena Cherry':     'cherry',
+  'Coconut':            'coconut',
+  'Dark Chocolate':     'chocolate',
+  'Hazelnut & Nutella': 'hazelnut',
+  'Peanut Butter Cup':  'peanutbutter',
+  'Pistachio':          'pistachio',
+  'Lemon':              'lemon',
+  'Strawberry':         'strawberry',
+}
 
-export default function HomePage() {
+export default async function HomePage() {
   const todayIndex = (new Date().getDay() + 6) % 7
   const today = WEEK_HOURS[todayIndex]
+  const { reviews, rating, mapsUri } = await getReviews()
 
   return (
     <>
@@ -136,7 +148,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="mt-10 pt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3" style={{ borderTop: '1px solid rgba(0,0,0,0.08)' }}>
-            {['★ 4.9 Google Rating', '100% Natural Ingredients', 'Homemade Cones', 'Locally Owned & Operated'].map((b) => (
+            {[`★ ${rating} Google Rating`, '100% Natural Ingredients', 'Homemade Cones', 'Locally Owned & Operated'].map((b) => (
               <span key={b} className="text-xs sm:text-sm font-medium uppercase tracking-wider" style={{ color: '#6B6B6B' }}>{b}</span>
             ))}
           </div>
@@ -174,6 +186,7 @@ export default function HomePage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
             {FEATURED.map((f) => {
               const accent = flavorAccents[f.name] ?? { border: '#4A8DB5', bg: '#ffffff' }
+              const seed = flavorImageSeeds[f.name] ?? f.name.toLowerCase()
               return (
                 <div
                   key={f.name}
@@ -184,6 +197,14 @@ export default function HomePage() {
                     backgroundColor: accent.bg,
                   }}
                 >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`https://picsum.photos/seed/${seed}/400/267`}
+                    alt={`${f.name} gelato`}
+                    loading="lazy"
+                    className="w-full object-cover"
+                    style={{ aspectRatio: '3/2' }}
+                  />
                   <div className="p-4">
                     <h3 className="font-playfair font-bold text-sm leading-snug mb-1" style={{ color: '#1C1C1C' }}>{f.name}</h3>
                     <p className="text-xs leading-relaxed mb-3" style={{ color: '#6B6B6B', lineHeight: '1.6' }}>{f.description}</p>
@@ -255,42 +276,7 @@ export default function HomePage() {
               What Guests Say
             </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {REVIEWS.map((r) => (
-              <div key={r.name} className="bg-white rounded-xl p-6 lg:p-7 flex flex-col" style={{ border: '1px solid rgba(0,0,0,0.08)' }}>
-                <div className="flex gap-0.5 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="#4A8DB5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
-                  ))}
-                </div>
-                <p className="text-sm leading-relaxed flex-1 mb-5" style={{ color: '#3D3D3D', lineHeight: '1.7' }}>&ldquo;{r.text}&rdquo;</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold font-playfair" style={{ backgroundColor: 'rgba(74,141,181,0.15)', color: '#4A8DB5' }}>{r.name[0]}</div>
-                  <div>
-                    <p className="text-xs font-semibold" style={{ color: '#1C1C1C' }}>{r.name}</p>
-                    <p className="text-xs" style={{ color: '#6B6B6B' }}>via Google</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-10 text-center">
-            <a
-              href="https://bit.ly/2D5NAAl"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 text-sm font-semibold px-6 py-3 rounded-lg transition-colors hover:bg-[#4A8DB5] hover:text-white hover:border-[#4A8DB5]"
-              style={{ border: '2px solid rgba(0,0,0,0.15)', color: '#3D3D3D' }}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden>
-                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-              </svg>
-              Read all our reviews on Google
-            </a>
-          </div>
+          <ReviewsSection reviews={reviews} mapsUri={mapsUri} />
         </div>
       </section>
 
