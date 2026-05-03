@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     url: 'https://gelatocimminowebsite.vercel.app',
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?w=1200&h=630&fit=crop',
+        url: 'https://gelatocimminowebsite.vercel.app/gelato-counter-staff.jpg',
         width: 1200,
         height: 630,
-        alt: 'Fresh Italian gelato at Gelato Cimmino Scottsdale',
+        alt: 'Gelato Cimmino counter and staff in Scottsdale, AZ',
       },
     ],
     type: 'website',
@@ -85,7 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Navbar />
-        <main className="pb-16 md:pb-0" style={{ paddingTop: '64px' }}>
+        <main className="pb-16 md:pb-0 pt-16 lg:pt-20">
           {children}
         </main>
         <Footer />

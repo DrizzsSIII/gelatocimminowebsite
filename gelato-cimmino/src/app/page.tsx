@@ -159,14 +159,14 @@ export default async function HomePage() {
 
       {/* Photo strip */}
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-        <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: '4px' }}>
-          <div className="overflow-hidden" style={{ aspectRatio: '4/3' }}>
+        <div className="grid grid-cols-3" style={{ gap: '4px' }}>
+          <div className="overflow-hidden" style={{ height: 'clamp(100px, 22vw, 360px)' }}>
             <Image src="/gelato-shop-interior.jpg" alt="Gelato Cimmino shop interior" width={600} height={450} loading="lazy" className="w-full h-full object-cover" />
           </div>
-          <div className="overflow-hidden" style={{ aspectRatio: '4/3' }}>
+          <div className="overflow-hidden" style={{ height: 'clamp(100px, 22vw, 360px)' }}>
             <Image src="/gelato-made-fresh.jpg" alt="Gelato being made fresh in house" width={600} height={450} loading="lazy" className="w-full h-full object-cover" />
           </div>
-          <div className="overflow-hidden" style={{ aspectRatio: '4/3' }}>
+          <div className="overflow-hidden" style={{ height: 'clamp(100px, 22vw, 360px)' }}>
             <Image src="/gelato-shop-atmosphere.jpg" alt="Inside Gelato Cimmino Scottsdale" width={600} height={450} loading="lazy" className="w-full h-full object-cover" />
           </div>
         </div>

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { WEEK_HOURS } from '@/lib/hours'
 
 const LINKS = [
   { label: 'About the Owner', href: '/about' },
@@ -16,7 +17,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
 
           <div>
-            <Image src="/logo-blue.jpg" alt="Gelato Cimmino" width={130} height={40} className="h-9 w-auto object-contain mb-4" />
+            <Image src="/logo-white.png" alt="Gelato Cimmino" width={130} height={40} className="h-9 w-auto object-contain mb-4" />
             <p className="text-sm leading-relaxed mb-5" style={{ color: '#8A8A8A' }}>
               Authentic Italian gelato crafted daily from fresh, natural ingredients.
               Old World techniques, Scottsdale flavors.
@@ -30,8 +31,8 @@ export default function Footer() {
                 className="w-8 h-8 rounded flex items-center justify-center transition-colors hover:bg-[#4A8DB5]"
                 style={{ backgroundColor: 'rgba(255,255,255,0.08)', color: '#8A8A8A' }}
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" fill="currentColor" stroke="none" />
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                 </svg>
               </a>
               <a
@@ -72,24 +73,10 @@ export default function Footer() {
               <a href="tel:4805901025" className="block mt-2 transition-colors hover:text-[#4A8DB5]">(480) 590-1025</a>
               <a href="mailto:gelatocimmino@gmail.com" className="block mt-1 transition-colors hover:text-[#4A8DB5]">gelatocimmino@gmail.com</a>
             </address>
-            <div className="flex gap-2 mt-3">
-              <a href="https://www.instagram.com/gelatocimmino" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" className="p-2 rounded-lg transition-colors hover:bg-stone-700" style={{ border: '1px solid #4a4a4a', color: '#8A8A8A' }}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5"/>
-                  <circle cx="12" cy="12" r="4"/>
-                  <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
-                </svg>
-              </a>
-              <a href="https://www.facebook.com/gelatocimmino" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" className="p-2 rounded-lg transition-colors hover:bg-stone-700" style={{ border: '1px solid #4a4a4a', color: '#8A8A8A' }}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
-                </svg>
-              </a>
-            </div>
-            <div className="text-sm space-y-1 mt-4" style={{ color: '#8A8A8A' }}>
-              <p>Mon–Wed: 10 AM – 9 PM</p>
-              <p>Thu–Sat: 10 AM – 10 PM</p>
-              <p>Sun: 10 AM – 9 PM</p>
+            <div className="text-sm space-y-1" style={{ color: '#8A8A8A' }}>
+              {WEEK_HOURS.map((h) => (
+                <p key={h.day}>{h.day}: {h.open} – {h.close}</p>
+              ))}
             </div>
           </div>
         </div>
