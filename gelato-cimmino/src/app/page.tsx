@@ -2,8 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FLAVORS } from '@/lib/flavors'
 import { WEEK_HOURS } from '@/lib/hours'
+import { LOCATIONS } from '@/lib/locations'
 import { getReviews } from '@/lib/reviews'
 import { ReviewsSection } from '@/components/ReviewsSection'
+import { NewsletterForm } from '@/components/NewsletterForm'
 
 export const revalidate = 86400
 
@@ -80,6 +82,14 @@ const flavorImageSeeds: Record<string, string> = {
   'Strawberry':         'strawberry',
 }
 
+// Update this array to change which flavors appear in the Seasonal Favorites section.
+const SEASONAL_FLAVORS = [
+  { name: 'Pistachio',       desc: 'Rich and creamy, made with real Sicilian pistachios sourced directly from Italy.', border: '#6B8C5A', bg: '#f0fdf4', badge: 'Gelato',   seed: 'pistachio' },
+  { name: 'Stracciatella',   desc: 'Silky cream gelato with delicate ribbons of fine dark chocolate throughout.',       border: '#3B1F0A', bg: '#fdf8f5', badge: 'Gelato',   seed: 'chocolate' },
+  { name: 'Mango Sorbetto',  desc: 'Bright, dairy-free, and intensely fruity — pure Alphonso mango in every bite.',    border: '#CA8A04', bg: '#fefce8', badge: 'Sorbetto', seed: 'tropical'  },
+  { name: 'Amarena Cherry',  desc: 'Wild Sicilian amarena cherries swirled through silky cream gelato.',                border: '#8B1A1A', bg: '#fff5f5', badge: 'Gelato',   seed: 'cherry'    },
+]
+
 export default async function HomePage() {
   const todayIndex = (new Date().getDay() + 6) % 7
   const today = WEEK_HOURS[todayIndex]
@@ -93,7 +103,7 @@ export default async function HomePage() {
           <span className="w-2 h-2 rounded-full bg-white opacity-80 inline-block" />
           Open Today: {today.open} – {today.close}
           <span className="mx-1 opacity-40">·</span>
-          <span style={{ color: 'rgba(255,255,255,0.85)' }}>7140 E Main St, Scottsdale</span>
+          <span style={{ color: 'rgba(255,255,255,0.85)' }}>Scottsdale &amp; Gilbert</span>
         </span>
       </div>
 
@@ -132,16 +142,14 @@ export default async function HomePage() {
                 className="inline-flex items-center justify-center text-sm font-semibold text-white px-7 py-3.5 rounded transition-colors active:scale-95 hover:opacity-90"
                 style={{ backgroundColor: '#4A8DB5' }}
               >
-                See Our Menu
+                View Flavors
               </a>
               <a
-                href="https://maps.google.com/?q=7140+E+Main+St,+Scottsdale,+AZ+85251"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#locations"
                 className="inline-flex items-center justify-center text-sm font-semibold px-7 py-3.5 rounded transition-colors active:scale-95 hover:bg-white hover:text-[#1C1C1C]"
                 style={{ border: '2px solid rgba(255,255,255,0.7)', color: '#ffffff' }}
               >
-                Get Directions
+                Find a Location
               </a>
             </div>
           </div>
@@ -181,6 +189,59 @@ export default async function HomePage() {
                 <div className="mb-3">{f.icon}</div>
                 <h3 className="font-playfair font-bold text-base mb-2" style={{ color: '#1C1C1C' }}>{f.title}</h3>
                 <p className="text-xs leading-relaxed" style={{ color: '#6B6B6B', lineHeight: '1.65' }}>{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Seasonal Favorites — update SEASONAL_FLAVORS const to change cards */}
+      <section style={{ backgroundColor: '#ffffff', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-px w-8" style={{ backgroundColor: '#4A8DB5' }} />
+                <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#4A8DB5' }}>Seasonal Picks</span>
+              </div>
+              <h2 className="font-playfair font-bold" style={{ fontSize: 'clamp(2rem,4vw,3rem)', color: '#1C1C1C', letterSpacing: '-0.02em' }}>
+                Seasonal Favorites
+              </h2>
+              <p className="mt-2 text-base" style={{ color: '#6B6B6B' }}>What&apos;s churning this season — available at both locations</p>
+            </div>
+            <Link href="/gelato-menu" className="inline-flex items-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors hover:opacity-70 flex-shrink-0" style={{ color: '#4A8DB5' }}>
+              Full Menu
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+            {SEASONAL_FLAVORS.map((f) => (
+              <div
+                key={f.name}
+                className="rounded-2xl overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+                style={{ backgroundColor: f.bg, border: `1px solid rgba(0,0,0,0.07)` }}
+              >
+                <div
+                  className="w-full"
+                  style={{ height: '8px', backgroundColor: f.border }}
+                />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`https://picsum.photos/seed/${f.seed}-seasonal/400/280`}
+                  alt={`${f.name} gelato`}
+                  loading="lazy"
+                  className="w-full object-cover"
+                  style={{ aspectRatio: '4/3' }}
+                />
+                <div className="p-5">
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <h3 className="font-playfair font-bold text-sm leading-snug" style={{ color: '#1C1C1C' }}>{f.name}</h3>
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full flex-shrink-0 mt-0.5" style={{ backgroundColor: 'rgba(74,141,181,0.12)', color: '#2E6A8F' }}>
+                      {f.badge}
+                    </span>
+                  </div>
+                  <p className="text-xs leading-relaxed" style={{ color: '#6B6B6B', lineHeight: '1.65' }}>{f.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -317,77 +378,157 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Find Us */}
-      <section id="find-us" style={{ backgroundColor: '#F5F7F9', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+      {/* Two Locations — data lives in src/lib/locations.ts */}
+      <section id="locations" style={{ backgroundColor: '#F5F7F9', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="h-px w-8" style={{ backgroundColor: '#4A8DB5' }} />
-                <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#4A8DB5' }}>Location</span>
-              </div>
-              <h2 className="font-playfair font-bold mb-8" style={{ fontSize: 'clamp(2rem,3vw,2.8rem)', color: '#1C1C1C', letterSpacing: '-0.02em' }}>Find Us</h2>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: '#1C1C1C' }}>Address</h3>
-                  <address className="not-italic text-sm leading-relaxed" style={{ color: '#3D3D3D' }}>
-                    <p>7140 E Main St, Scottsdale, AZ 85251</p>
-                    <a href="tel:4805901025" className="block mt-1 hover:text-[#4A8DB5] transition-colors" style={{ color: '#3D3D3D' }}>(480) 590-1025</a>
-                  </address>
-                </div>
-                <div>
-                  <h3 className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#1C1C1C' }}>Hours</h3>
-                  <table className="text-sm w-full max-w-xs">
-                    <tbody>
-                      {WEEK_HOURS.map((h, i) => (
-                        <tr
-                          key={h.day}
-                          style={{
-                            borderBottom: '1px solid rgba(0,0,0,0.06)',
-                            backgroundColor: i === todayIndex ? '#f0fdf4' : undefined,
-                          }}
-                        >
-                          <td className="py-2 font-medium">
-                            <span className="flex items-center gap-2">
-                              <span>{h.day}</span>
-                              {i === todayIndex && (
-                                <span className="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full font-medium">
-                                  Today
-                                </span>
-                              )}
-                            </span>
-                          </td>
-                          <td className="py-2" style={{ color: i === todayIndex ? '#1C1C1C' : '#6B6B6B', fontWeight: i === todayIndex ? 600 : undefined }}>{h.open} – {h.close}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-                <a
-                  href="https://maps.google.com/?q=7140+E+Main+St,+Scottsdale,+AZ+85251"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-white px-5 py-3 rounded transition-colors hover:opacity-90 active:scale-95"
-                  style={{ backgroundColor: '#4A8DB5' }}
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
-                  Get Directions
-                </a>
-              </div>
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="h-px w-8" style={{ backgroundColor: '#4A8DB5' }} />
+              <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#4A8DB5' }}>Find Us</span>
+              <div className="h-px w-8" style={{ backgroundColor: '#4A8DB5' }} />
             </div>
-            <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(0,0,0,0.1)', minHeight: '400px' }}>
-              <iframe
-                title="Gelato Cimmino location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.076!2d-111.92546!3d33.49490!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872b08d15f827e67%3A0x1bc2f813d6c5ec69!2s7140%20E%20Main%20St%2C%20Scottsdale%2C%20AZ%2085251!5e0!3m2!1sen!2sus!4v1699000000000"
-                width="100%"
-                height="100%"
-                style={{ border: 0, minHeight: '400px', display: 'block' }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
+            <h2 className="font-playfair font-bold" style={{ fontSize: 'clamp(2rem,4vw,3rem)', color: '#1C1C1C', letterSpacing: '-0.02em' }}>
+              Two Locations
+            </h2>
+            <p className="mt-3 text-base" style={{ color: '#6B6B6B' }}>Same recipe. Same quality. Now closer to you.</p>
           </div>
+
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
+            {LOCATIONS.map((loc) => (
+              <div
+                key={loc.id}
+                className="bg-white rounded-2xl overflow-hidden flex flex-col"
+                style={{ border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 2px 16px rgba(0,0,0,0.05)' }}
+              >
+                {/* Card header */}
+                <div className="px-7 pt-7 pb-5" style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
+                  <div className="flex items-center justify-between mb-1">
+                    <h3 className="font-playfair font-bold" style={{ fontSize: '1.5rem', color: '#1C1C1C', letterSpacing: '-0.01em' }}>
+                      {loc.name}
+                    </h3>
+                    {loc.isComingSoon && (
+                      <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(74,141,181,0.12)', color: '#2E6A8F' }}>
+                        Opening Soon
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm" style={{ color: '#6B6B6B' }}>Gelato Cimmino · {loc.cityStateZip.split(',')[1]?.trim()}</p>
+                </div>
+
+                {/* Map embed — Scottsdale only; Gilbert shows placeholder */}
+                {loc.mapsEmbed ? (
+                  <div style={{ height: '220px' }}>
+                    <iframe
+                      title={`Gelato Cimmino ${loc.name} map`}
+                      src={loc.mapsEmbed}
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0, display: 'block' }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="flex flex-col items-center justify-center gap-3"
+                    style={{ height: '220px', backgroundColor: '#EAF2F8' }}
+                  >
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#4A8DB5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.6">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                      <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    <p className="text-sm font-medium" style={{ color: '#4A8DB5' }}>Gilbert location coming soon</p>
+                  </div>
+                )}
+
+                {/* Card body */}
+                <div className="px-7 py-6 flex-1 flex flex-col gap-5">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: '#1C1C1C' }}>Address</p>
+                      <address className="not-italic text-sm leading-relaxed" style={{ color: '#3D3D3D' }}>
+                        <p>{loc.address}</p>
+                        <p>{loc.cityStateZip}</p>
+                      </address>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: '#1C1C1C' }}>Phone</p>
+                      {loc.phoneRaw ? (
+                        <a href={`tel:${loc.phoneRaw}`} className="text-sm transition-colors hover:text-[#4A8DB5]" style={{ color: '#3D3D3D' }}>
+                          {loc.phone}
+                        </a>
+                      ) : (
+                        <p className="text-sm" style={{ color: '#9A9A9A' }}>{loc.phone}</p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: '#1C1C1C' }}>Hours</p>
+                    <div className="space-y-1">
+                      {loc.hours.map((h) => (
+                        <div key={h.days} className="flex justify-between text-sm">
+                          <span style={{ color: '#6B6B6B' }}>{h.days}</span>
+                          <span className="font-medium" style={{ color: '#1C1C1C' }}>{h.time}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Action buttons */}
+                  <div className="flex gap-3 mt-auto pt-2">
+                    <a
+                      href={loc.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center gap-2 text-sm font-semibold text-white px-4 py-3 rounded-lg transition-opacity hover:opacity-90 active:scale-95"
+                      style={{ backgroundColor: '#4A8DB5' }}
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                      Get Directions
+                    </a>
+                    {loc.phoneRaw ? (
+                      <a
+                        href={`tel:${loc.phoneRaw}`}
+                        className="flex-1 inline-flex items-center justify-center gap-2 text-sm font-semibold px-4 py-3 rounded-lg transition-colors hover:bg-[#4A8DB5] hover:text-white"
+                        style={{ border: '1.5px solid rgba(0,0,0,0.15)', color: '#3D3D3D' }}
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+                        Call
+                      </a>
+                    ) : (
+                      <span
+                        className="flex-1 inline-flex items-center justify-center text-sm font-medium px-4 py-3 rounded-lg"
+                        style={{ border: '1.5px solid rgba(0,0,0,0.08)', color: '#9A9A9A', cursor: 'not-allowed' }}
+                      >
+                        Call — Soon
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter — wire up to email provider in NewsletterForm.tsx */}
+      <section style={{ backgroundColor: '#EAF2F8', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 text-center">
+          <div className="flex items-center justify-center gap-3 mb-5">
+            <div className="h-px w-8" style={{ backgroundColor: 'rgba(74,141,181,0.4)' }} />
+            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#4A8DB5' }}>Stay in the Loop</span>
+            <div className="h-px w-8" style={{ backgroundColor: 'rgba(74,141,181,0.4)' }} />
+          </div>
+          <h2 className="font-playfair font-bold mb-3" style={{ fontSize: 'clamp(1.8rem,3vw,2.4rem)', color: '#1C1C1C', letterSpacing: '-0.02em' }}>
+            Stay Updated on Seasonal Flavors
+          </h2>
+          <p className="text-base mb-8" style={{ color: '#6B6B6B', lineHeight: '1.7' }}>
+            Get updates on new flavors, specials, and events at both locations.
+          </p>
+          <NewsletterForm />
+          <p className="text-xs mt-4" style={{ color: '#8A8A8A' }}>No spam. Unsubscribe anytime.</p>
         </div>
       </section>
     </>
