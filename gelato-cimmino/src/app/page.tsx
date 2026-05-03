@@ -97,63 +97,80 @@ export default async function HomePage() {
         </span>
       </div>
 
-      {/* Hero */}
-      <section style={{ backgroundColor: '#ffffff' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <Image src="/c-wreath.png" alt="" width={32} height={32} className="opacity-60" aria-hidden />
-                <div className="h-px w-8" style={{ backgroundColor: '#4A8DB5' }} />
-                <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#4A8DB5' }}>
-                  Scottsdale, AZ · Est. 2010
-                </span>
-              </div>
-              <h1 className="font-playfair font-bold leading-tight mb-6" style={{ fontSize: 'clamp(2.8rem,6vw,4.5rem)', lineHeight: '1.06', color: '#1C1C1C', letterSpacing: '-0.02em' }}>
-                {"Scottsdale's"}<br />
-                Best<br />
-                <em className="not-italic" style={{ color: '#4A8DB5' }}>Gelato.</em>
-              </h1>
-              <p className="text-lg leading-relaxed mb-8 max-w-md" style={{ color: '#5A5A5A', lineHeight: '1.7' }}>
-                Handcrafted daily using Old World Italian techniques and the finest natural ingredients. Born in Torre del Greco, perfected in Scottsdale.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <a
-                  href="#flavors"
-                  className="inline-flex items-center justify-center text-sm font-semibold text-white px-7 py-3.5 rounded transition-colors active:scale-95 hover:opacity-90"
-                  style={{ backgroundColor: '#4A8DB5' }}
-                >
-                  See Our Menu
-                </a>
-                <a
-                  href="https://maps.google.com/?q=7140+E+Main+St,+Scottsdale,+AZ+85251"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center text-sm font-semibold px-7 py-3.5 rounded transition-colors active:scale-95 hover:bg-[#4A8DB5] hover:text-white"
-                  style={{ border: '2px solid #4A8DB5', color: '#4A8DB5' }}
-                >
-                  Get Directions
-                </a>
-              </div>
+      {/* Hero — full-bleed background image */}
+      <section className="relative overflow-hidden" style={{ minHeight: '580px' }}>
+        <Image
+          src="/gelato-counter-staff.jpg"
+          alt=""
+          aria-hidden
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.45)' }} />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10 lg:pt-24 lg:pb-14">
+          <div className="max-w-xl">
+            <div className="flex items-center gap-3 mb-6">
+              <Image src="/c-wreath.png" alt="" width={32} height={32} className="opacity-80" aria-hidden />
+              <div className="h-px w-8 bg-white/40" />
+              <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                Scottsdale, AZ · Est. 2010
+              </span>
             </div>
-            <div className="relative rounded-2xl overflow-hidden w-full aspect-[4/3]">
-              <Image
-                src="/images/hero-gelato.jpg"
-                alt="Fresh Italian gelato at Gelato Cimmino"
-                fill
-                priority
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+            <h1 className="font-playfair font-bold leading-tight mb-6" style={{ fontSize: 'clamp(2.8rem,6vw,4.5rem)', lineHeight: '1.06', color: '#ffffff', letterSpacing: '-0.02em' }}>
+              {"Scottsdale's"}<br />
+              Best<br />
+              <em className="not-italic" style={{ color: '#7EC8E3' }}>Gelato.</em>
+            </h1>
+            <p className="text-lg leading-relaxed mb-8 max-w-md" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: '1.7' }}>
+              Handcrafted daily using Old World Italian techniques and the finest natural ingredients. Born in Torre del Greco, perfected in Scottsdale.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href="#flavors"
+                className="inline-flex items-center justify-center text-sm font-semibold text-white px-7 py-3.5 rounded transition-colors active:scale-95 hover:opacity-90"
+                style={{ backgroundColor: '#4A8DB5' }}
+              >
+                See Our Menu
+              </a>
+              <a
+                href="https://maps.google.com/?q=7140+E+Main+St,+Scottsdale,+AZ+85251"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center text-sm font-semibold px-7 py-3.5 rounded transition-colors active:scale-95 hover:bg-white hover:text-[#1C1C1C]"
+                style={{ border: '2px solid rgba(255,255,255,0.7)', color: '#ffffff' }}
+              >
+                Get Directions
+              </a>
             </div>
-          </div>
-          <div className="mt-10 pt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3" style={{ borderTop: '1px solid rgba(0,0,0,0.08)' }}>
-            {[`★ ${rating} Google Rating`, '100% Natural Ingredients', 'Homemade Cones', 'Locally Owned & Operated'].map((b) => (
-              <span key={b} className="text-xs sm:text-sm font-medium uppercase tracking-wider" style={{ color: '#6B6B6B' }}>{b}</span>
-            ))}
           </div>
         </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 pt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-4" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}>
+          <span className="text-xs sm:text-sm font-medium uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.75)' }}>{`★ ${rating} Google Rating`}</span>
+          <span className="inline-flex items-center gap-2">
+            <Image src="/gelato-100-natural-badge.jpg" alt="100% Natural certified" width={52} height={52} className="rounded object-contain" />
+            <span className="text-xs sm:text-sm font-medium uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.75)' }}>100% Natural Ingredients</span>
+          </span>
+          <span className="text-xs sm:text-sm font-medium uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.75)' }}>Homemade Cones</span>
+          <span className="text-xs sm:text-sm font-medium uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.75)' }}>Locally Owned &amp; Operated</span>
+        </div>
       </section>
+
+      {/* Photo strip */}
+      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: '4px' }}>
+          <div className="overflow-hidden" style={{ aspectRatio: '4/3' }}>
+            <Image src="/gelato-shop-interior.jpg" alt="Gelato Cimmino shop interior" width={600} height={450} loading="lazy" className="w-full h-full object-cover" />
+          </div>
+          <div className="overflow-hidden" style={{ aspectRatio: '4/3' }}>
+            <Image src="/gelato-made-fresh.jpg" alt="Gelato being made fresh in house" width={600} height={450} loading="lazy" className="w-full h-full object-cover" />
+          </div>
+          <div className="overflow-hidden" style={{ aspectRatio: '4/3' }}>
+            <Image src="/gelato-shop-atmosphere.jpg" alt="Inside Gelato Cimmino Scottsdale" width={600} height={450} loading="lazy" className="w-full h-full object-cover" />
+          </div>
+        </div>
+      </div>
 
       {/* Features */}
       <section style={{ backgroundColor: '#F5F7F9', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
@@ -252,13 +269,33 @@ export default async function HomePage() {
               </Link>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="relative rounded-xl overflow-hidden aspect-[3/4]">
-                <Image src="/images/story-mario.jpg" alt="Mario Cimmino, founder" fill className="object-cover object-top" sizes="(max-width: 1024px) 50vw, 25vw" />
+              <div className="relative rounded-xl overflow-hidden" style={{ height: '320px' }}>
+                <Image src="/gelato-happy-customer.jpg" alt="Happy customer enjoying Gelato Cimmino" fill className="object-cover object-center" sizes="(max-width: 1024px) 50vw, 25vw" />
               </div>
-              <div className="relative rounded-xl overflow-hidden aspect-[3/4] mt-8">
-                <Image src="/images/story-shop.jpg" alt="Gelato Cimmino shop" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+              <div className="relative rounded-xl overflow-hidden mt-8" style={{ height: '320px' }}>
+                <Image src="/gelato-qualita-semplice-italian.jpg" alt="Qualitá Semplice — Simple Quality, Genuine Product" fill className="object-cover object-center" sizes="(max-width: 1024px) 50vw, 25vw" />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Philosophy Banner */}
+      <section style={{ backgroundColor: '#1C1C1C' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+            <div className="rounded-xl overflow-hidden" style={{ height: '280px', position: 'relative' }}>
+              <Image src="/gelato-qualita-semplice-italian.jpg" alt="Qualitá Semplice signage in Italian" fill className="object-cover object-center" sizes="(max-width: 640px) 100vw, 50vw" />
+            </div>
+            <div className="rounded-xl overflow-hidden" style={{ height: '280px', position: 'relative' }}>
+              <Image src="/gelato-simple-quality-english.jpg" alt="Simple Quality — Genuine Product" fill className="object-cover object-center" sizes="(max-width: 640px) 100vw, 50vw" />
+            </div>
+          </div>
+          <div className="text-center">
+            <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: 'rgba(255,255,255,0.45)' }}>Our Philosophy</p>
+            <p className="font-playfair italic" style={{ fontSize: 'clamp(1.6rem,3vw,2.4rem)', color: '#ffffff', letterSpacing: '-0.01em' }}>
+              &ldquo;Simple quality. Genuine product.&rdquo;
+            </p>
           </div>
         </div>
       </section>
