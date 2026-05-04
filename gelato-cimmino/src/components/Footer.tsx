@@ -18,7 +18,7 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="md:col-span-1">
-            <Image src="/logo-white.png" alt="Gelato Cimmino" width={130} height={40} className="h-9 w-auto object-contain mb-4" />
+            <Image src="/logo-white.svg" alt="Gelato Cimmino" width={200} height={90} className="h-9 w-auto mb-4" />
             <p className="text-sm leading-relaxed mb-5" style={{ color: '#8A8A8A' }}>
               Authentic Italian gelato crafted daily from fresh, natural ingredients.
               Old World techniques, Scottsdale &amp; Gilbert flavors.

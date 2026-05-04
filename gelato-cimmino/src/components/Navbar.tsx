@@ -45,11 +45,11 @@ export default function Navbar() {
 
           <Link href="/" className="flex-shrink-0">
             <Image
-              src="/logo-blue.jpg"
+              src="/logo.svg"
               alt="Gelato Cimmino"
-              width={130}
-              height={40}
-              className="h-8 lg:h-10 w-auto object-contain"
+              width={200}
+              height={90}
+              className="h-8 lg:h-10 w-auto"
               priority
             />
           </Link>

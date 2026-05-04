@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 90" role="img" aria-label="Gelato Cimmino logo">
+  <!-- GELATO wordmark -->
+  <text
+    x="100" y="24"
+    font-family="'Arial Narrow','Arial',sans-serif"
+    font-size="22" font-weight="800"
+    letter-spacing="6" text-anchor="middle"
+    fill="#ffffff">GELATO</text>
+
+  <!-- Left rule -->
+  <line x1="16" y1="43" x2="87" y2="43" stroke="#ffffff" stroke-width="0.75" opacity="0.4"/>
+
+  <!-- 5-pointed star — center (100,43), outer r=9, inner r=3.6 -->
+  <path
+    d="M100,34 L102.1,40.1 L108.6,40.2 L103.4,44.1 L105.3,50.3 L100,46.6 L94.7,50.3 L96.6,44.1 L91.4,40.2 L97.9,40.1 Z"
+    fill="#ffffff"/>
+
+  <!-- Right rule -->
+  <line x1="113" y1="43" x2="184" y2="43" stroke="#ffffff" stroke-width="0.75" opacity="0.4"/>
+
+  <!-- CIMMINO wordmark -->
+  <text
+    x="100" y="72"
+    font-family="'Arial Narrow','Arial',sans-serif"
+    font-size="22" font-weight="800"
+    letter-spacing="6" text-anchor="middle"
+    fill="#ffffff">CIMMINO</text>
+
+  <!-- Location tagline -->
+  <text
+    x="100" y="84"
+    font-family="'Arial Narrow','Arial',sans-serif"
+    font-size="8" letter-spacing="2.5"
+    text-anchor="middle" opacity="0.55"
+    fill="#ffffff">· SCOTTSDALE ·</text>
+</svg>
