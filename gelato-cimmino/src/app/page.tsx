@@ -1,4 +1,4 @@
-﻿import Image from 'next/image'
+import Image from 'next/image'
 import Link from 'next/link'
 import { FLAVORS } from '@/lib/flavors'
 import { WEEK_HOURS } from '@/lib/hours'
@@ -107,18 +107,25 @@ export default async function HomePage() {
         </span>
       </div>
 
-      {/* Hero — full-bleed background image */}
-      <section className="relative overflow-hidden" style={{ minHeight: '580px' }}>
+      {/* SECTION 1 — Hero: full-bleed background image */}
+      {/* quality={90} and sizes="100vw" ensure correct responsive image resolution */}
+      <section
+        className="relative overflow-hidden"
+        style={{ minHeight: 'clamp(420px, 60vw, 560px)' }}
+      >
         <Image
           src="/gelato-counter-staff.jpg"
           alt=""
           aria-hidden
           fill
           priority
+          quality={90}
           className="object-cover object-center"
           sizes="100vw"
         />
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.45)' }} />
+
+        {/* Hero text content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10 lg:pt-24 lg:pb-14">
           <div className="max-w-xl">
             <div className="flex items-center gap-3 mb-6">
@@ -154,10 +161,23 @@ export default async function HomePage() {
             </div>
           </div>
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 pt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-4" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}>
+
+        {/* SECTION 3 — Features / trust badges bar inside hero */}
+        {/* Badge image: 40×40, flex-shrink-0, object-contain, vertical-align middle */}
+        <div
+          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
+          style={{ borderTop: '1px solid rgba(255,255,255,0.15)', paddingTop: '2.5rem', paddingBottom: '2.5rem' }}
+        >
           <span className="text-xs sm:text-sm font-medium uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.75)' }}>{`★ ${rating} Google Rating`}</span>
           <span className="inline-flex items-center gap-2">
-            <Image src="/gelato-100-natural-badge.jpg" alt="100% Natural certified" width={52} height={52} className="rounded object-contain" />
+            <Image
+              src="/gelato-100-natural-badge.jpg"
+              alt="100% Natural certified"
+              width={40}
+              height={40}
+              className="rounded flex-shrink-0 object-contain"
+              style={{ verticalAlign: 'middle' }}
+            />
             <span className="text-xs sm:text-sm font-medium uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.75)' }}>100% Natural Ingredients</span>
           </span>
           <span className="text-xs sm:text-sm font-medium uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.75)' }}>Homemade Cones</span>
@@ -165,24 +185,61 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Photo strip */}
-      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-        <div className="grid grid-cols-3" style={{ gap: '4px' }}>
-          <div className="overflow-hidden" style={{ height: 'clamp(100px, 22vw, 360px)' }}>
-            <Image src="/gelato-shop-interior.jpg" alt="Gelato Cimmino shop interior" width={600} height={450} loading="lazy" className="w-full h-full object-cover" />
+      {/* SECTION 2 — Photo strip: 3-up grid with gap, 2-up on mobile with 3rd hidden */}
+      <div style={{ backgroundColor: '#ffffff', padding: '6px' }}>
+        <div
+          className="grid grid-cols-2 sm:grid-cols-3"
+          style={{ gap: '6px', maxWidth: '100%' }}
+        >
+          <div className="overflow-hidden" style={{ aspectRatio: '4/3' }}>
+            <Image
+              src="/gelato-shop-interior.jpg"
+              alt="Gelato Cimmino shop interior"
+              fill={false}
+              width={800}
+              height={600}
+              loading="lazy"
+              quality={85}
+              sizes="(max-width: 640px) 50vw, 33vw"
+              className="w-full h-full object-cover block"
+              style={{ aspectRatio: '4/3' }}
+            />
           </div>
-          <div className="overflow-hidden" style={{ height: 'clamp(100px, 22vw, 360px)' }}>
-            <Image src="/gelato-made-fresh.jpg" alt="Gelato being made fresh in house" width={600} height={450} loading="lazy" className="w-full h-full object-cover" />
+          <div className="overflow-hidden" style={{ aspectRatio: '4/3' }}>
+            <Image
+              src="/gelato-made-fresh.jpg"
+              alt="Gelato being made fresh in house"
+              fill={false}
+              width={800}
+              height={600}
+              loading="lazy"
+              quality={85}
+              sizes="(max-width: 640px) 50vw, 33vw"
+              className="w-full h-full object-cover block"
+              style={{ aspectRatio: '4/3' }}
+            />
           </div>
-          <div className="overflow-hidden" style={{ height: 'clamp(100px, 22vw, 360px)' }}>
-            <Image src="/gelato-shop-atmosphere.jpg" alt="Inside Gelato Cimmino Scottsdale" width={600} height={450} loading="lazy" className="w-full h-full object-cover" />
+          {/* Third image hidden on mobile, visible sm+ */}
+          <div className="hidden sm:block overflow-hidden" style={{ aspectRatio: '4/3' }}>
+            <Image
+              src="/gelato-shop-atmosphere.jpg"
+              alt="Inside Gelato Cimmino Scottsdale"
+              fill={false}
+              width={800}
+              height={600}
+              loading="lazy"
+              quality={85}
+              sizes="33vw"
+              className="w-full h-full object-cover block"
+              style={{ aspectRatio: '4/3' }}
+            />
           </div>
         </div>
       </div>
 
-      {/* Features */}
-      <section style={{ backgroundColor: '#F5F7F9', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      {/* Features grid — 4 cards */}
+      <section style={{ backgroundColor: '#F5F7F9', borderTop: '1px solid rgba(0,0,0,0.06)', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{ paddingTop: '2.5rem', paddingBottom: '2.5rem' }}>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
             {FEATURES.map((f) => (
               <div key={f.title} className="bg-white rounded-xl p-6" style={{ border: '1px solid rgba(0,0,0,0.08)' }}>
@@ -214,23 +271,20 @@ export default async function HomePage() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </Link>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
             {SEASONAL_FLAVORS.map((f) => (
               <div
                 key={f.name}
                 className="rounded-2xl overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
                 style={{ backgroundColor: f.bg, border: `1px solid rgba(0,0,0,0.07)` }}
               >
-                <div
-                  className="w-full"
-                  style={{ height: '8px', backgroundColor: f.border }}
-                />
+                <div className="w-full" style={{ height: '8px', backgroundColor: f.border }} />
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={`https://picsum.photos/seed/${f.seed}-seasonal/400/280`}
                   alt={`${f.name} gelato`}
                   loading="lazy"
-                  className="w-full object-cover"
+                  className="w-full block object-cover"
                   style={{ aspectRatio: '4/3' }}
                 />
                 <div className="p-5">
@@ -248,9 +302,9 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Featured Flavors */}
+      {/* SECTION 4 — Featured Flavors grid */}
       <section id="flavors" style={{ backgroundColor: '#ffffff', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{ paddingTop: '4rem', paddingBottom: '2rem' }}>
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-8" style={{ backgroundColor: '#1E3A6E' }} />
@@ -261,7 +315,8 @@ export default async function HomePage() {
             </h2>
             <p className="text-lg" style={{ color: '#6B6B6B' }}>Made fresh every day — flavors rotate seasonally</p>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+          {/* Card grid: 1fr on small mobile, 2 cols tablet, 4 cols desktop */}
+          <div className="grid grid-cols-2 lg:grid-cols-4" style={{ gap: '1.25rem' }}>
             {FEATURED.map((f) => {
               const accent = flavorAccents[f.name] ?? { border: '#1E3A6E', bg: '#ffffff' }
               const seed = flavorImageSeeds[f.name] ?? f.name.toLowerCase()
@@ -280,7 +335,7 @@ export default async function HomePage() {
                     src={`https://picsum.photos/seed/${seed}/400/267`}
                     alt={`${f.name} gelato`}
                     loading="lazy"
-                    className="w-full object-cover"
+                    className="w-full block object-cover"
                     style={{ aspectRatio: '3/2' }}
                   />
                   <div className="p-4">
@@ -297,7 +352,8 @@ export default async function HomePage() {
               )
             })}
           </div>
-          <div className="mt-10 text-center">
+          {/* "View Full Menu" button */}
+          <div className="text-center" style={{ marginTop: '2.5rem' }}>
             <Link href="/gelato-menu" className="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:opacity-70" style={{ color: '#1E3A6E' }}>
               View Full Menu
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
@@ -306,11 +362,14 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Our Story */}
+      {/* SECTION 5 — Our Story: 2-column layout, single image on right */}
+      {/* Left (55%): text. Right (45%): gelato-happy-customer.jpg only at 440px height */}
+      {/* gelato-qualita-semplice-italian.jpg is removed from here — it belongs in philosophy only */}
       <section id="story" style={{ backgroundColor: '#EAF2F8', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
+          <div className="flex flex-col md:flex-row gap-12 lg:gap-20 items-center">
+            {/* Left column — text */}
+            <div className="flex-1 md:pr-12">
               <div className="flex items-center gap-3 mb-6">
                 <div className="h-px w-8" style={{ backgroundColor: '#1E3A6E' }} />
                 <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#1E3A6E' }}>Our Story</span>
@@ -329,39 +388,74 @@ export default async function HomePage() {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="relative rounded-xl overflow-hidden" style={{ height: '320px' }}>
-                <Image src="/gelato-happy-customer.jpg" alt="Happy customer enjoying Gelato Cimmino" fill className="object-cover object-center" sizes="(max-width: 1024px) 50vw, 25vw" />
-              </div>
-              <div className="relative rounded-xl overflow-hidden mt-8" style={{ height: '320px' }}>
-                <Image src="/gelato-qualita-semplice-italian.jpg" alt="Qualitá Semplice — Simple Quality, Genuine Product" fill className="object-cover object-center" sizes="(max-width: 1024px) 50vw, 25vw" />
+            {/* Right column — single image, 440px desktop / 280px mobile */}
+            <div className="w-full md:w-auto md:flex-shrink-0" style={{ width: undefined }}>
+              <div
+                className="relative rounded-xl overflow-hidden w-full"
+                style={{ height: 'clamp(280px, 40vw, 440px)', minWidth: 0, maxWidth: '540px' }}
+              >
+                <Image
+                  src="/gelato-happy-customer.jpg"
+                  alt="Happy customer enjoying Gelato Cimmino"
+                  fill
+                  quality={85}
+                  className="object-cover object-center"
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Philosophy Banner */}
+      {/* SECTION 6 — Philosophy / quote: centered, max-w 800px, images as object-contain side by side */}
+      {/* gelato-qualita-semplice-italian.jpg appears ONCE here (left slot) */}
+      {/* gelato-simple-quality-english.jpg in right slot */}
       <section style={{ backgroundColor: '#1C1C1C' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-            <div className="rounded-xl overflow-hidden" style={{ height: '280px', position: 'relative' }}>
-              <Image src="/gelato-qualita-semplice-italian.jpg" alt="Qualitá Semplice signage in Italian" fill className="object-cover object-center" sizes="(max-width: 640px) 100vw, 50vw" />
-            </div>
-            <div className="rounded-xl overflow-hidden" style={{ height: '280px', position: 'relative' }}>
-              <Image src="/gelato-simple-quality-english.jpg" alt="Simple Quality — Genuine Product" fill className="object-cover object-center" sizes="(max-width: 640px) 100vw, 50vw" />
-            </div>
+        <div
+          className="mx-auto px-6 text-center"
+          style={{ maxWidth: '800px', paddingTop: '4rem', paddingBottom: '4rem' }}
+        >
+          {/* Image row */}
+          <div
+            className="flex flex-wrap justify-center items-center"
+            style={{ gap: '2rem', marginBottom: '2rem' }}
+          >
+            <Image
+              src="/gelato-qualita-semplice-italian.jpg"
+              alt="Qualitá Semplice signage in Italian"
+              width={320}
+              height={240}
+              quality={90}
+              sizes="(max-width: 640px) 90vw, 320px"
+              className="rounded-lg object-contain w-full"
+              style={{ maxWidth: '320px', boxShadow: '0 4px 20px rgba(0,0,0,0.15)' }}
+            />
+            <Image
+              src="/gelato-simple-quality-english.jpg"
+              alt="Simple Quality — Genuine Product"
+              width={320}
+              height={240}
+              quality={90}
+              sizes="(max-width: 640px) 90vw, 320px"
+              className="rounded-lg object-contain w-full"
+              style={{ maxWidth: '320px', boxShadow: '0 4px 20px rgba(0,0,0,0.15)' }}
+            />
           </div>
-          <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: 'rgba(255,255,255,0.45)' }}>Our Philosophy</p>
-            <p className="font-playfair italic" style={{ fontSize: 'clamp(1.6rem,3vw,2.4rem)', color: '#ffffff', letterSpacing: '-0.01em' }}>
-              &ldquo;Simple quality. Genuine product.&rdquo;
-            </p>
-          </div>
+          {/* Text below images */}
+          <p
+            className="font-semibold uppercase"
+            style={{ fontSize: '0.7rem', letterSpacing: '0.15em', color: 'rgba(255,255,255,0.45)', marginTop: '1.5rem', marginBottom: '0.75rem' }}
+          >
+            Our Philosophy
+          </p>
+          <p className="font-playfair italic" style={{ fontSize: 'clamp(1.6rem,3vw,2.4rem)', color: '#ffffff', letterSpacing: '-0.01em' }}>
+            &ldquo;Simple quality. Genuine product.&rdquo;
+          </p>
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Testimonials / Reviews */}
       <section style={{ backgroundColor: '#ffffff', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="text-center mb-12">
@@ -464,16 +558,49 @@ export default async function HomePage() {
                     </div>
                   </div>
 
+                  {/* SECTION 7 — Hours table with proper Today badge structure */}
+                  {/* Day name and badge are in SEPARATE elements — never concatenated */}
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: '#1C1C1C' }}>Hours</p>
-                    <div className="space-y-1">
-                      {loc.hours.map((h) => (
-                        <div key={h.days} className="flex justify-between text-sm">
-                          <span style={{ color: '#6B6B6B' }}>{h.days}</span>
-                          <span className="font-medium" style={{ color: '#1C1C1C' }}>{h.time}</span>
-                        </div>
-                      ))}
-                    </div>
+                    {loc.id === 'scottsdale' ? (
+                      <table className="text-sm w-full">
+                        <tbody>
+                          {WEEK_HOURS.map((h, i) => (
+                            <tr key={h.day} style={{ borderBottom: '1px solid rgba(0,0,0,0.04)' }}>
+                              <td className="py-1.5 font-medium" style={{ color: '#1C1C1C' }}>
+                                {/* Day name and Today badge are always separate elements */}
+                                <span>{h.day}</span>
+                                {i === todayIndex && (
+                                  <span
+                                    className="inline-block ml-1.5 font-semibold text-white rounded-full"
+                                    style={{
+                                      fontSize: '0.65rem',
+                                      backgroundColor: '#1E3A6E',
+                                      padding: '1px 6px',
+                                      verticalAlign: 'middle',
+                                    }}
+                                  >
+                                    Today
+                                  </span>
+                                )}
+                              </td>
+                              <td className="py-1.5 text-right" style={{ color: i === todayIndex ? '#1C1C1C' : '#6B6B6B', fontWeight: i === todayIndex ? 600 : undefined }}>
+                                {h.open} – {h.close}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    ) : (
+                      <div className="space-y-1">
+                        {loc.hours.map((h) => (
+                          <div key={h.days} className="flex justify-between text-sm">
+                            <span style={{ color: '#6B6B6B' }}>{h.days}</span>
+                            <span className="font-medium" style={{ color: '#1C1C1C' }}>{h.time}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   {/* Action buttons */}
