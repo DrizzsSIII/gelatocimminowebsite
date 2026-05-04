@@ -1,4 +1,4 @@
-const FEATURES = [
+﻿const FEATURES = [
   {
     title: '100% Natural',
     description: 'No artificial flavors, colors, or preservatives — every ingredient is chosen for taste and quality.',
@@ -62,9 +62,9 @@ export default function WhyCimmino() {
           {FEATURES.map((f) => (
             <div
               key={f.title}
-              className="bg-[#F5F7F9] border border-black/10 rounded-xl p-6 hover:border-[#4A8DB5]/30 transition-colors"
+              className="bg-[#F5F7F9] border border-black/10 rounded-xl p-6 hover:border-[#1E3A6E]/30 transition-colors"
             >
-              <div className="text-[#4A8DB5] mb-4">{f.icon}</div>
+              <div className="text-[#1E3A6E] mb-4">{f.icon}</div>
               <h3 className="font-playfair font-bold text-[#1C1C1C] text-lg mb-2">{f.title}</h3>
               <p className="font-inter text-sm text-[#6B6B6B] leading-relaxed">{f.description}</p>
             </div>

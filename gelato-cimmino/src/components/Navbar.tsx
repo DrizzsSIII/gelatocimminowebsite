@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -61,7 +61,7 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={`px-3 py-2 rounded text-sm font-medium transition-colors ${
-                  isActive(item.href) ? 'text-[#4A8DB5]' : 'text-[#3D3D3D] hover:text-[#4A8DB5]'
+                  isActive(item.href) ? 'text-[#1E3A6E]' : 'text-[#3D3D3D] hover:text-[#1E3A6E]'
                 }`}
               >
                 {item.label}
@@ -70,7 +70,7 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-4">
-            <a href="tel:4805901025" className="text-sm transition-colors hover:text-[#4A8DB5]" style={{ color: '#3D3D3D' }}>
+            <a href="tel:4805901025" className="text-sm transition-colors hover:text-[#1E3A6E]" style={{ color: '#3D3D3D' }}>
               (480) 590-1025
             </a>
             <a
@@ -78,7 +78,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-semibold text-white px-4 py-2 rounded transition-colors hover:opacity-90 active:scale-95"
-              style={{ backgroundColor: '#4A8DB5' }}
+              style={{ backgroundColor: '#1E3A6E' }}
             >
               Get Directions
             </a>
@@ -105,7 +105,7 @@ export default function Navbar() {
               key={item.href}
               href={item.href}
               className={`py-2.5 text-base font-medium transition-colors ${
-                isActive(item.href) ? 'text-[#4A8DB5]' : 'text-[#1C1C1C]'
+                isActive(item.href) ? 'text-[#1E3A6E]' : 'text-[#1C1C1C]'
               }`}
             >
               {item.label}
@@ -118,7 +118,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-semibold text-white px-4 py-2.5 rounded text-center"
-              style={{ backgroundColor: '#4A8DB5' }}
+              style={{ backgroundColor: '#1E3A6E' }}
             >
               Get Directions
             </a>

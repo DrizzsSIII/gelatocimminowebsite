@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 import { useState } from 'react'
 import type { GoogleReview } from '@/lib/reviews'
 
@@ -16,7 +16,7 @@ function ReviewCard({ review }: { review: GoogleReview }) {
     <div className="bg-white rounded-xl p-6 lg:p-7 flex flex-col" style={{ border: '1px solid rgba(0,0,0,0.08)' }}>
       <div className="flex gap-0.5 mb-4">
         {[...Array(Math.min(review.rating, 5))].map((_, i) => (
-          <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="#4A8DB5">
+          <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="#1E3A6E">
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
           </svg>
         ))}
@@ -27,7 +27,7 @@ function ReviewCard({ review }: { review: GoogleReview }) {
           <button
             onClick={() => setExpanded(!expanded)}
             className="ml-1 font-semibold hover:opacity-70 transition-opacity"
-            style={{ color: '#4A8DB5' }}
+            style={{ color: '#1E3A6E' }}
           >
             {expanded ? 'read less' : 'read more'}
           </button>
@@ -45,7 +45,7 @@ function ReviewCard({ review }: { review: GoogleReview }) {
         ) : (
           <div
             className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold font-playfair"
-            style={{ backgroundColor: 'rgba(74,141,181,0.15)', color: '#4A8DB5' }}
+            style={{ backgroundColor: 'rgba(30,58,110,0.15)', color: '#1E3A6E' }}
           >
             {review.authorName[0]}
           </div>
@@ -78,7 +78,7 @@ export function ReviewsSection({
           href={mapsUri}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2.5 text-sm font-semibold px-6 py-3 rounded-lg transition-colors hover:bg-[#4A8DB5] hover:text-white hover:border-[#4A8DB5]"
+          className="inline-flex items-center gap-2.5 text-sm font-semibold px-6 py-3 rounded-lg transition-colors hover:bg-[#1E3A6E] hover:text-white hover:border-[#1E3A6E]"
           style={{ border: '2px solid rgba(0,0,0,0.15)', color: '#3D3D3D' }}
         >
           <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden>

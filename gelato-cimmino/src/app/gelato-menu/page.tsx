@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { FLAVORS, FlavorCategory, CATEGORY_LABELS, CATEGORY_DESCRIPTIONS } from '@/lib/flavors'
 
 export const metadata: Metadata = { title: 'Our Gelato Menu' }
@@ -12,8 +12,8 @@ export default function MenuPage() {
       <div style={{ backgroundColor: '#F5F7F9', borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-8" style={{ backgroundColor: '#4A8DB5' }} />
-            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#4A8DB5' }}>Menu</span>
+            <div className="h-px w-8" style={{ backgroundColor: '#1E3A6E' }} />
+            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#1E3A6E' }}>Menu</span>
           </div>
           <h1 className="font-playfair font-bold mb-3" style={{ fontSize: 'clamp(2.2rem,5vw,3.5rem)', color: '#1C1C1C', letterSpacing: '-0.02em' }}>
             Our Gelato Menu
@@ -47,7 +47,7 @@ export default function MenuPage() {
                           <p className="text-xs leading-relaxed mb-3" style={{ color: '#6B6B6B' }}>{f.description}</p>
                           <div className="flex flex-wrap gap-1.5">
                             {f.dairyFree && (
-                              <span className="text-xs font-medium px-2 py-0.5 rounded-full" style={{ backgroundColor: '#EAF2F8', color: '#2E6A8F' }}>Dairy-Free</span>
+                              <span className="text-xs font-medium px-2 py-0.5 rounded-full" style={{ backgroundColor: '#EAF2F8', color: '#142857' }}>Dairy-Free</span>
                             )}
                             {f.glutenFree && (
                               <span className="text-xs font-medium px-2 py-0.5 rounded-full" style={{ backgroundColor: '#F5F7F9', color: '#5A5A5A' }}>GF</span>

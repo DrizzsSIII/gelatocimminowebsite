@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 
 export const metadata: Metadata = { title: 'Core Values' }
 
@@ -27,8 +27,8 @@ export default function CoreValuesPage() {
       <div style={{ backgroundColor: '#F5F7F9', borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-8" style={{ backgroundColor: '#4A8DB5' }} />
-            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#4A8DB5' }}>About Us</span>
+            <div className="h-px w-8" style={{ backgroundColor: '#1E3A6E' }} />
+            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#1E3A6E' }}>About Us</span>
           </div>
           <h1 className="font-playfair font-bold mb-3" style={{ fontSize: 'clamp(2.2rem,5vw,3.5rem)', color: '#1C1C1C', letterSpacing: '-0.02em' }}>
             Core Values
@@ -44,7 +44,7 @@ export default function CoreValuesPage() {
           <div className="grid sm:grid-cols-2 gap-8 max-w-4xl">
             {VALUES.map((v, i) => (
               <div key={v.title} className="rounded-xl p-8" style={{ backgroundColor: '#F5F7F9', border: '1px solid rgba(0,0,0,0.06)' }}>
-                <div className="w-8 h-8 rounded-lg mb-5 flex items-center justify-center text-sm font-bold" style={{ backgroundColor: '#4A8DB5', color: '#fff' }}>
+                <div className="w-8 h-8 rounded-lg mb-5 flex items-center justify-center text-sm font-bold" style={{ backgroundColor: '#1E3A6E', color: '#fff' }}>
                   {i + 1}
                 </div>
                 <h2 className="font-playfair font-bold text-xl mb-3" style={{ color: '#1C1C1C' }}>{v.title}</h2>

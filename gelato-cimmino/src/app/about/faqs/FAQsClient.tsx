@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 import { useState } from 'react'
 
 const FAQS = [
@@ -20,8 +20,8 @@ export default function FAQsClient() {
       <div style={{ backgroundColor: '#F5F7F9', borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-8" style={{ backgroundColor: '#4A8DB5' }} />
-            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#4A8DB5' }}>About Us</span>
+            <div className="h-px w-8" style={{ backgroundColor: '#1E3A6E' }} />
+            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#1E3A6E' }}>About Us</span>
           </div>
           <h1 className="font-playfair font-bold mb-3" style={{ fontSize: 'clamp(2.2rem,5vw,3.5rem)', color: '#1C1C1C', letterSpacing: '-0.02em' }}>
             Frequently Asked Questions
@@ -44,7 +44,7 @@ export default function FAQsClient() {
                 >
                   <span className="font-semibold text-sm pr-4" style={{ color: '#1C1C1C' }}>{faq.q}</span>
                   <svg
-                    width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4A8DB5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                    width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E3A6E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                     className="flex-shrink-0 transition-transform duration-200"
                     style={{ transform: open === i ? 'rotate(180deg)' : '' }}
                   >

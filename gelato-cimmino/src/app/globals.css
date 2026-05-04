@@ -1,4 +1,4 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -13,7 +13,7 @@ html {
   }
 
   ::selection {
-    background-color: #4A8DB5;
+    background-color: #1E3A6E;
     color: #ffffff;
   }
 

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -10,8 +10,8 @@ export default function AboutPage() {
       <div style={{ backgroundColor: '#F5F7F9', borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-8" style={{ backgroundColor: '#4A8DB5' }} />
-            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#4A8DB5' }}>About Us</span>
+            <div className="h-px w-8" style={{ backgroundColor: '#1E3A6E' }} />
+            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#1E3A6E' }}>About Us</span>
           </div>
           <h1 className="font-playfair font-bold mb-3" style={{ fontSize: 'clamp(2.2rem,5vw,3.5rem)', color: '#1C1C1C', letterSpacing: '-0.02em' }}>
             The Cimmino Story
@@ -42,7 +42,7 @@ export default function AboutPage() {
                 </p>
               </div>
               <div className="flex items-center gap-3 mt-8">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 font-playfair font-bold" style={{ backgroundColor: 'rgba(74,141,181,0.15)', color: '#4A8DB5' }}>M</div>
+                <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 font-playfair font-bold" style={{ backgroundColor: 'rgba(30,58,110,0.15)', color: '#1E3A6E' }}>M</div>
                 <div>
                   <p className="text-sm font-semibold" style={{ color: '#1C1C1C' }}>Mario Cimmino</p>
                   <p className="text-xs" style={{ color: '#6B6B6B' }}>Founder &amp; Master Gelatiere</p>
@@ -87,9 +87,9 @@ export default function AboutPage() {
                 className="group bg-white rounded-xl p-6 transition-shadow hover:shadow-md"
                 style={{ border: '1px solid rgba(0,0,0,0.08)' }}
               >
-                <h3 className="font-playfair font-bold text-lg mb-2 group-hover:text-[#4A8DB5] transition-colors" style={{ color: '#1C1C1C' }}>{card.title}</h3>
+                <h3 className="font-playfair font-bold text-lg mb-2 group-hover:text-[#1E3A6E] transition-colors" style={{ color: '#1C1C1C' }}>{card.title}</h3>
                 <p className="text-sm mb-4" style={{ color: '#6B6B6B' }}>{card.desc}</p>
-                <span className="inline-flex items-center gap-1.5 text-sm font-semibold" style={{ color: '#4A8DB5' }}>
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold" style={{ color: '#1E3A6E' }}>
                   Learn more
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                 </span>

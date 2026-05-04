@@ -1,4 +1,4 @@
-import { WEEK_HOURS } from '@/lib/hours'
+﻿import { WEEK_HOURS } from '@/lib/hours'
 
 export default function FindUs() {
   return (
@@ -25,7 +25,7 @@ export default function FindUs() {
                 <p>Scottsdale, AZ 85251</p>
                 <a
                   href="tel:4805901025"
-                  className="hover:text-[#4A8DB5] transition-colors mt-1 inline-block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4A8DB5] rounded"
+                  className="hover:text-[#1E3A6E] transition-colors mt-1 inline-block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1E3A6E] rounded"
                   style={{ color: '#3D3D3D' }}
                 >
                   (480) 590-1025

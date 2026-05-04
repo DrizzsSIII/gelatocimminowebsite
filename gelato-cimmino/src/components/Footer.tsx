@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import Image from 'next/image'
 import { LOCATIONS } from '@/lib/locations'
 
@@ -29,7 +29,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="w-8 h-8 rounded flex items-center justify-center transition-colors hover:bg-[#4A8DB5]"
+                className="w-8 h-8 rounded flex items-center justify-center transition-colors hover:bg-[#2A5298]"
                 style={{ backgroundColor: 'rgba(255,255,255,0.08)', color: '#8A8A8A' }}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -41,7 +41,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="w-8 h-8 rounded flex items-center justify-center transition-colors hover:bg-[#4A8DB5]"
+                className="w-8 h-8 rounded flex items-center justify-center transition-colors hover:bg-[#2A5298]"
                 style={{ backgroundColor: 'rgba(255,255,255,0.08)', color: '#8A8A8A' }}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -55,11 +55,11 @@ export default function Footer() {
 
           {/* Quick links */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-widest mb-5" style={{ color: '#4A8DB5' }}>Quick Links</h3>
+            <h3 className="text-xs font-semibold uppercase tracking-widest mb-5" style={{ color: '#6EA8E0' }}>Quick Links</h3>
             <ul className="flex flex-col gap-2.5">
               {NAV_LINKS.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-sm transition-colors hover:text-[#4A8DB5]" style={{ color: '#8A8A8A' }}>
+                  <Link href={l.href} className="text-sm transition-colors hover:text-[#6EA8E0]" style={{ color: '#8A8A8A' }}>
                     {l.label}
                   </Link>
                 </li>
@@ -70,10 +70,10 @@ export default function Footer() {
           {/* Location columns — one per entry in LOCATIONS */}
           {LOCATIONS.map((loc) => (
             <div key={loc.id}>
-              <h3 className="text-xs font-semibold uppercase tracking-widest mb-5" style={{ color: '#4A8DB5' }}>
+              <h3 className="text-xs font-semibold uppercase tracking-widest mb-5" style={{ color: '#6EA8E0' }}>
                 {loc.name}
                 {loc.isComingSoon && (
-                  <span className="ml-2 normal-case text-xs px-1.5 py-0.5 rounded" style={{ backgroundColor: 'rgba(74,141,181,0.2)', color: '#4A8DB5', letterSpacing: '0' }}>
+                  <span className="ml-2 normal-case text-xs px-1.5 py-0.5 rounded" style={{ backgroundColor: 'rgba(110,168,224,0.2)', color: '#6EA8E0', letterSpacing: '0' }}>
                     Soon
                   </span>
                 )}
@@ -82,7 +82,7 @@ export default function Footer() {
                 <p>{loc.address}</p>
                 <p>{loc.cityStateZip}</p>
                 {loc.phoneRaw ? (
-                  <a href={`tel:${loc.phoneRaw}`} className="block mt-2 transition-colors hover:text-[#4A8DB5]">{loc.phone}</a>
+                  <a href={`tel:${loc.phoneRaw}`} className="block mt-2 transition-colors hover:text-[#6EA8E0]">{loc.phone}</a>
                 ) : (
                   <p className="mt-2" style={{ color: '#5A5A5A' }}>{loc.phone}</p>
                 )}
@@ -96,7 +96,7 @@ export default function Footer() {
                 href={loc.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold mt-4 transition-colors hover:text-[#4A8DB5]"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold mt-4 transition-colors hover:text-[#6EA8E0]"
                 style={{ color: '#6A6A6A' }}
               >
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

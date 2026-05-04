@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 import { useState } from 'react'
 
 export function NewsletterForm() {
@@ -14,9 +14,9 @@ export function NewsletterForm() {
 
   if (status === 'success') {
     return (
-      <div className="rounded-xl px-6 py-5 text-center" style={{ backgroundColor: 'rgba(74,141,181,0.12)', border: '1px solid rgba(74,141,181,0.25)' }}>
-        <p className="font-semibold text-sm" style={{ color: '#2E6A8F' }}>You&apos;re on the list!</p>
-        <p className="text-xs mt-1" style={{ color: '#4A8DB5' }}>We&apos;ll let you know when new flavors drop.</p>
+      <div className="rounded-xl px-6 py-5 text-center" style={{ backgroundColor: 'rgba(30,58,110,0.12)', border: '1px solid rgba(30,58,110,0.25)' }}>
+        <p className="font-semibold text-sm" style={{ color: '#142857' }}>You&apos;re on the list!</p>
+        <p className="text-xs mt-1" style={{ color: '#1E3A6E' }}>We&apos;ll let you know when new flavors drop.</p>
       </div>
     )
   }
@@ -29,13 +29,13 @@ export function NewsletterForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Your email address"
-        className="flex-1 px-4 py-3 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#4A8DB5]"
+        className="flex-1 px-4 py-3 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#1E3A6E]"
         style={{ border: '1px solid rgba(0,0,0,0.15)', color: '#1C1C1C' }}
       />
       <button
         type="submit"
         className="px-6 py-3 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90 active:scale-95 whitespace-nowrap"
-        style={{ backgroundColor: '#4A8DB5' }}
+        style={{ backgroundColor: '#1E3A6E' }}
       >
         Subscribe
       </button>

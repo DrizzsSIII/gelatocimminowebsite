@@ -1,4 +1,4 @@
-import Image from 'next/image'
+﻿import Image from 'next/image'
 import Link from 'next/link'
 import { FLAVORS } from '@/lib/flavors'
 import { WEEK_HOURS } from '@/lib/hours'
@@ -98,7 +98,7 @@ export default async function HomePage() {
   return (
     <>
       {/* Hours banner */}
-      <div className="py-2.5 px-4 text-center text-sm font-medium text-white" style={{ backgroundColor: '#4A8DB5' }}>
+      <div className="py-2.5 px-4 text-center text-sm font-medium text-white" style={{ backgroundColor: '#1E3A6E' }}>
         <span className="inline-flex items-center gap-2 flex-wrap justify-center">
           <span className="w-2 h-2 rounded-full bg-white opacity-80 inline-block" />
           Open Today: {today.open} – {today.close}
@@ -131,7 +131,7 @@ export default async function HomePage() {
             <h1 className="font-playfair font-bold leading-tight mb-6" style={{ fontSize: 'clamp(2.8rem,6vw,4.5rem)', lineHeight: '1.06', color: '#ffffff', letterSpacing: '-0.02em' }}>
               {"Scottsdale's"}<br />
               Best<br />
-              <em className="not-italic" style={{ color: '#7EC8E3' }}>Gelato.</em>
+              <em className="not-italic" style={{ color: '#6EA8E0' }}>Gelato.</em>
             </h1>
             <p className="text-lg leading-relaxed mb-8 max-w-md" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: '1.7' }}>
               Handcrafted daily using Old World Italian techniques and the finest natural ingredients. Born in Torre del Greco, perfected in Scottsdale.
@@ -140,7 +140,7 @@ export default async function HomePage() {
               <a
                 href="#flavors"
                 className="inline-flex items-center justify-center text-sm font-semibold text-white px-7 py-3.5 rounded transition-colors active:scale-95 hover:opacity-90"
-                style={{ backgroundColor: '#4A8DB5' }}
+                style={{ backgroundColor: '#1E3A6E' }}
               >
                 View Flavors
               </a>
@@ -201,15 +201,15 @@ export default async function HomePage() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="h-px w-8" style={{ backgroundColor: '#4A8DB5' }} />
-                <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#4A8DB5' }}>Seasonal Picks</span>
+                <div className="h-px w-8" style={{ backgroundColor: '#1E3A6E' }} />
+                <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#1E3A6E' }}>Seasonal Picks</span>
               </div>
               <h2 className="font-playfair font-bold" style={{ fontSize: 'clamp(2rem,4vw,3rem)', color: '#1C1C1C', letterSpacing: '-0.02em' }}>
                 Seasonal Favorites
               </h2>
               <p className="mt-2 text-base" style={{ color: '#6B6B6B' }}>What&apos;s churning this season — available at both locations</p>
             </div>
-            <Link href="/gelato-menu" className="inline-flex items-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors hover:opacity-70 flex-shrink-0" style={{ color: '#4A8DB5' }}>
+            <Link href="/gelato-menu" className="inline-flex items-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors hover:opacity-70 flex-shrink-0" style={{ color: '#1E3A6E' }}>
               Full Menu
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </Link>
@@ -236,7 +236,7 @@ export default async function HomePage() {
                 <div className="p-5">
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <h3 className="font-playfair font-bold text-sm leading-snug" style={{ color: '#1C1C1C' }}>{f.name}</h3>
-                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full flex-shrink-0 mt-0.5" style={{ backgroundColor: 'rgba(74,141,181,0.12)', color: '#2E6A8F' }}>
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full flex-shrink-0 mt-0.5" style={{ backgroundColor: 'rgba(30,58,110,0.12)', color: '#142857' }}>
                       {f.badge}
                     </span>
                   </div>
@@ -253,8 +253,8 @@ export default async function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-4">
-              <div className="h-px w-8" style={{ backgroundColor: '#4A8DB5' }} />
-              <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#4A8DB5' }}>Flavors</span>
+              <div className="h-px w-8" style={{ backgroundColor: '#1E3A6E' }} />
+              <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#1E3A6E' }}>Flavors</span>
             </div>
             <h2 className="font-playfair font-bold mb-3" style={{ fontSize: 'clamp(2rem,4vw,3rem)', color: '#1C1C1C', letterSpacing: '-0.02em' }}>
               Our Gelato
@@ -263,7 +263,7 @@ export default async function HomePage() {
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
             {FEATURED.map((f) => {
-              const accent = flavorAccents[f.name] ?? { border: '#4A8DB5', bg: '#ffffff' }
+              const accent = flavorAccents[f.name] ?? { border: '#1E3A6E', bg: '#ffffff' }
               const seed = flavorImageSeeds[f.name] ?? f.name.toLowerCase()
               return (
                 <div
@@ -287,8 +287,8 @@ export default async function HomePage() {
                     <h3 className="font-playfair font-bold text-sm leading-snug mb-1" style={{ color: '#1C1C1C' }}>{f.name}</h3>
                     <p className="text-xs leading-relaxed mb-3" style={{ color: '#6B6B6B', lineHeight: '1.6' }}>{f.description}</p>
                     <span className="inline-block text-xs font-semibold px-2.5 py-1 rounded-full" style={{
-                      backgroundColor: f.category === 'sorbetto' ? '#EAF2F8' : 'rgba(74,141,181,0.1)',
-                      color: '#2E6A8F',
+                      backgroundColor: f.category === 'sorbetto' ? '#EAF2F8' : 'rgba(30,58,110,0.1)',
+                      color: '#142857',
                     }}>
                       {f.category === 'sorbetto' ? 'Sorbetto' : f.category === 'specialty' ? 'Specialty' : 'Gelato'}
                     </span>
@@ -298,7 +298,7 @@ export default async function HomePage() {
             })}
           </div>
           <div className="mt-10 text-center">
-            <Link href="/gelato-menu" className="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:opacity-70" style={{ color: '#4A8DB5' }}>
+            <Link href="/gelato-menu" className="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:opacity-70" style={{ color: '#1E3A6E' }}>
               View Full Menu
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </Link>
@@ -312,8 +312,8 @@ export default async function HomePage() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="h-px w-8" style={{ backgroundColor: '#4A8DB5' }} />
-                <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#4A8DB5' }}>Our Story</span>
+                <div className="h-px w-8" style={{ backgroundColor: '#1E3A6E' }} />
+                <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#1E3A6E' }}>Our Story</span>
               </div>
               <blockquote className="font-playfair italic mb-8 leading-snug" style={{ fontSize: 'clamp(1.5rem,3vw,2.2rem)', color: '#1C1C1C', letterSpacing: '-0.01em' }}>
                 &ldquo;Born in Torre del Greco — where gelato isn&apos;t a dessert, it&apos;s a way of life.&rdquo;
@@ -324,7 +324,7 @@ export default async function HomePage() {
               <p className="text-base leading-relaxed mb-8" style={{ color: '#3D3D3D', lineHeight: '1.75' }}>
                 When Mario brought his family&apos;s recipes to Scottsdale, he wasn&apos;t just opening a gelato shop — he was sharing a piece of Southern Italy with the desert Southwest.
               </p>
-              <Link href="/about" className="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:opacity-70" style={{ color: '#4A8DB5' }}>
+              <Link href="/about" className="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:opacity-70" style={{ color: '#1E3A6E' }}>
                 Read Our Story
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
@@ -366,9 +366,9 @@ export default async function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="h-px w-8" style={{ backgroundColor: 'rgba(74,141,181,0.3)' }} />
-              <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#4A8DB5' }}>Reviews</span>
-              <div className="h-px w-8" style={{ backgroundColor: 'rgba(74,141,181,0.3)' }} />
+              <div className="h-px w-8" style={{ backgroundColor: 'rgba(30,58,110,0.3)' }} />
+              <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#1E3A6E' }}>Reviews</span>
+              <div className="h-px w-8" style={{ backgroundColor: 'rgba(30,58,110,0.3)' }} />
             </div>
             <h2 className="font-playfair font-bold" style={{ fontSize: 'clamp(1.8rem,3vw,2.5rem)', color: '#1C1C1C', letterSpacing: '-0.02em' }}>
               What Guests Say
@@ -383,9 +383,9 @@ export default async function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="h-px w-8" style={{ backgroundColor: '#4A8DB5' }} />
-              <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#4A8DB5' }}>Find Us</span>
-              <div className="h-px w-8" style={{ backgroundColor: '#4A8DB5' }} />
+              <div className="h-px w-8" style={{ backgroundColor: '#1E3A6E' }} />
+              <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#1E3A6E' }}>Find Us</span>
+              <div className="h-px w-8" style={{ backgroundColor: '#1E3A6E' }} />
             </div>
             <h2 className="font-playfair font-bold" style={{ fontSize: 'clamp(2rem,4vw,3rem)', color: '#1C1C1C', letterSpacing: '-0.02em' }}>
               Two Locations
@@ -407,7 +407,7 @@ export default async function HomePage() {
                       {loc.name}
                     </h3>
                     {loc.isComingSoon && (
-                      <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(74,141,181,0.12)', color: '#2E6A8F' }}>
+                      <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(30,58,110,0.12)', color: '#142857' }}>
                         Opening Soon
                       </span>
                     )}
@@ -434,11 +434,11 @@ export default async function HomePage() {
                     className="flex flex-col items-center justify-center gap-3"
                     style={{ height: '220px', backgroundColor: '#EAF2F8' }}
                   >
-                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#4A8DB5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.6">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1E3A6E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.6">
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                       <circle cx="12" cy="10" r="3"/>
                     </svg>
-                    <p className="text-sm font-medium" style={{ color: '#4A8DB5' }}>Gilbert location coming soon</p>
+                    <p className="text-sm font-medium" style={{ color: '#1E3A6E' }}>Gilbert location coming soon</p>
                   </div>
                 )}
 
@@ -455,7 +455,7 @@ export default async function HomePage() {
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: '#1C1C1C' }}>Phone</p>
                       {loc.phoneRaw ? (
-                        <a href={`tel:${loc.phoneRaw}`} className="text-sm transition-colors hover:text-[#4A8DB5]" style={{ color: '#3D3D3D' }}>
+                        <a href={`tel:${loc.phoneRaw}`} className="text-sm transition-colors hover:text-[#1E3A6E]" style={{ color: '#3D3D3D' }}>
                           {loc.phone}
                         </a>
                       ) : (
@@ -483,7 +483,7 @@ export default async function HomePage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1 inline-flex items-center justify-center gap-2 text-sm font-semibold text-white px-4 py-3 rounded-lg transition-opacity hover:opacity-90 active:scale-95"
-                      style={{ backgroundColor: '#4A8DB5' }}
+                      style={{ backgroundColor: '#1E3A6E' }}
                     >
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                       Get Directions
@@ -491,7 +491,7 @@ export default async function HomePage() {
                     {loc.phoneRaw ? (
                       <a
                         href={`tel:${loc.phoneRaw}`}
-                        className="flex-1 inline-flex items-center justify-center gap-2 text-sm font-semibold px-4 py-3 rounded-lg transition-colors hover:bg-[#4A8DB5] hover:text-white"
+                        className="flex-1 inline-flex items-center justify-center gap-2 text-sm font-semibold px-4 py-3 rounded-lg transition-colors hover:bg-[#1E3A6E] hover:text-white"
                         style={{ border: '1.5px solid rgba(0,0,0,0.15)', color: '#3D3D3D' }}
                       >
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
@@ -517,9 +517,9 @@ export default async function HomePage() {
       <section style={{ backgroundColor: '#EAF2F8', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 text-center">
           <div className="flex items-center justify-center gap-3 mb-5">
-            <div className="h-px w-8" style={{ backgroundColor: 'rgba(74,141,181,0.4)' }} />
-            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#4A8DB5' }}>Stay in the Loop</span>
-            <div className="h-px w-8" style={{ backgroundColor: 'rgba(74,141,181,0.4)' }} />
+            <div className="h-px w-8" style={{ backgroundColor: 'rgba(30,58,110,0.4)' }} />
+            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#1E3A6E' }}>Stay in the Loop</span>
+            <div className="h-px w-8" style={{ backgroundColor: 'rgba(30,58,110,0.4)' }} />
           </div>
           <h2 className="font-playfair font-bold mb-3" style={{ fontSize: 'clamp(1.8rem,3vw,2.4rem)', color: '#1C1C1C', letterSpacing: '-0.02em' }}>
             Stay Updated on Seasonal Flavors

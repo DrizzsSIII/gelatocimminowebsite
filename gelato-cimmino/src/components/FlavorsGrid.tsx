@@ -1,4 +1,4 @@
-import { FLAVORS } from '@/lib/flavors'
+﻿import { FLAVORS } from '@/lib/flavors'
 
 export default function FlavorsGrid() {
   return (
@@ -7,8 +7,8 @@ export default function FlavorsGrid() {
 
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-8 bg-[#4A8DB5]" />
-            <span className="font-inter text-xs text-[#4A8DB5] tracking-widest uppercase font-semibold">Flavors</span>
+            <div className="h-px w-8 bg-[#1E3A6E]" />
+            <span className="font-inter text-xs text-[#1E3A6E] tracking-widest uppercase font-semibold">Flavors</span>
           </div>
           <h2 className="font-playfair font-bold text-[#1C1C1C] text-4xl lg:text-5xl tracking-tightest mb-3">
             Our Gelato
@@ -22,7 +22,7 @@ export default function FlavorsGrid() {
           {FLAVORS.map((flavor) => (
             <div
               key={flavor.name}
-              className="group rounded-xl overflow-hidden border border-black/10 bg-white hover:border-[#4A8DB5]/30 hover:shadow-sm transition-all"
+              className="group rounded-xl overflow-hidden border border-black/10 bg-white hover:border-[#1E3A6E]/30 hover:shadow-sm transition-all"
             >
               <div
                 className="h-24 lg:h-28 w-full transition-transform duration-300 group-hover:scale-[1.02]"
@@ -39,8 +39,8 @@ export default function FlavorsGrid() {
                 <span
                   className={`inline-block text-xs font-inter font-semibold px-2.5 py-1 rounded-full ${
                     flavor.category === 'sorbetto'
-                      ? 'bg-[#EAF2F8] text-[#2E6A8F]'
-                      : 'bg-[#4A8DB5]/10 text-[#2E6A8F]'
+                      ? 'bg-[#EAF2F8] text-[#142857]'
+                      : 'bg-[#1E3A6E]/10 text-[#142857]'
                   }`}
                 >
                   {flavor.category === 'sorbetto' ? 'Sorbetto' : flavor.category === 'specialty' ? 'Specialty' : 'Gelato'}
@@ -53,7 +53,7 @@ export default function FlavorsGrid() {
         <div className="mt-10 text-center">
           <a
             href="#find-us"
-            className="inline-flex items-center gap-2 font-inter text-sm font-semibold text-[#4A8DB5] hover:text-[#2E6A8F] transition-colors"
+            className="inline-flex items-center gap-2 font-inter text-sm font-semibold text-[#1E3A6E] hover:text-[#142857] transition-colors"
           >
             See Full Menu
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

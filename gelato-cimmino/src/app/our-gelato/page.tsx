@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = { title: 'Our Gelato' }
@@ -16,8 +16,8 @@ export default function OurGelatoPage() {
       <div style={{ backgroundColor: '#F5F7F9', borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-8" style={{ backgroundColor: '#4A8DB5' }} />
-            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#4A8DB5' }}>Our Gelato</span>
+            <div className="h-px w-8" style={{ backgroundColor: '#1E3A6E' }} />
+            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#1E3A6E' }}>Our Gelato</span>
           </div>
           <h1 className="font-playfair font-bold mb-3" style={{ fontSize: 'clamp(2.2rem,5vw,3.5rem)', color: '#1C1C1C', letterSpacing: '-0.02em' }}>
             What Makes Gelato Special
@@ -39,7 +39,7 @@ export default function OurGelatoPage() {
               <div className="space-y-5">
                 {FACTS.map((f) => (
                   <div key={f.label} className="flex gap-4">
-                    <div className="w-1 rounded-full flex-shrink-0 mt-1" style={{ backgroundColor: '#4A8DB5', minHeight: '40px' }} />
+                    <div className="w-1 rounded-full flex-shrink-0 mt-1" style={{ backgroundColor: '#1E3A6E', minHeight: '40px' }} />
                     <div>
                       <p className="font-semibold text-sm mb-1" style={{ color: '#1C1C1C' }}>{f.label}</p>
                       <p className="text-sm leading-relaxed" style={{ color: '#5A5A5A' }}>{f.detail}</p>
@@ -62,7 +62,7 @@ export default function OurGelatoPage() {
               <p>
                 The churning process is slower and colder than ice cream, incorporating minimal air. The result is a texture that is impossibly smooth and dense — and a flavor that is pure and intense.
               </p>
-              <Link href="/our-gelato/fresh-ingredients" className="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:opacity-70" style={{ color: '#4A8DB5' }}>
+              <Link href="/our-gelato/fresh-ingredients" className="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:opacity-70" style={{ color: '#1E3A6E' }}>
                 Learn about our ingredients
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>

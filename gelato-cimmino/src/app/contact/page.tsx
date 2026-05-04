@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { WEEK_HOURS } from '@/lib/hours'
 import ContactForm from './ContactForm'
 
@@ -10,8 +10,8 @@ export default function ContactPage() {
       <div style={{ backgroundColor: '#F5F7F9', borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-8" style={{ backgroundColor: '#4A8DB5' }} />
-            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#4A8DB5' }}>Contact</span>
+            <div className="h-px w-8" style={{ backgroundColor: '#1E3A6E' }} />
+            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#1E3A6E' }}>Contact</span>
           </div>
           <h1 className="font-playfair font-bold mb-3" style={{ fontSize: 'clamp(2.2rem,5vw,3.5rem)', color: '#1C1C1C', letterSpacing: '-0.02em' }}>
             Find Us
@@ -37,8 +37,8 @@ export default function ContactPage() {
               <div>
                 <h2 className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#1C1C1C' }}>Phone & Email</h2>
                 <div className="space-y-2 text-base">
-                  <a href="tel:4805901025" className="block transition-colors hover:text-[#4A8DB5]" style={{ color: '#3D3D3D' }}>(480) 590-1025</a>
-                  <a href="mailto:gelatocimmino@gmail.com" className="block transition-colors hover:text-[#4A8DB5]" style={{ color: '#3D3D3D' }}>gelatocimmino@gmail.com</a>
+                  <a href="tel:4805901025" className="block transition-colors hover:text-[#1E3A6E]" style={{ color: '#3D3D3D' }}>(480) 590-1025</a>
+                  <a href="mailto:gelatocimmino@gmail.com" className="block transition-colors hover:text-[#1E3A6E]" style={{ color: '#3D3D3D' }}>gelatocimmino@gmail.com</a>
                 </div>
               </div>
 
@@ -61,7 +61,7 @@ export default function ContactPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-white px-5 py-3 rounded transition-colors hover:opacity-90 active:scale-95"
-                style={{ backgroundColor: '#4A8DB5' }}
+                style={{ backgroundColor: '#1E3A6E' }}
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
